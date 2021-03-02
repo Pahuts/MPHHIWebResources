@@ -1,0 +1,67 @@
+<section > <!--style="background-color: rgb(255, 255, 255)" -->
+  <div class="container" > <!--style="color: #ffffff; margin-bottom: 170px;" -->
+    <div class="page-heading">
+      {% block title %}
+        {% editable snippets 'MPHHI Header' type: 'HTML' %}
+      {% endblock %}
+      </div>
+      <div class="row" style="margin-bottom: 20px; background-color: rgba(255, 255, 255); padding: 20px; border-radius: 5px;" >
+        <div class="col-md-6">
+          {% block main %}
+            {% if page.adx_entitylist %}
+              <div style="margin-bottom: 20px;"> 
+                <h3 class="section-title show-bar" style="color: darkblue;" >My Upcoming Appointments</h3> 
+                <h5 class="section-title show-bar" style="color: #808080;" >List of the patient's upcoming appointments.</h5>
+                {% include 'entity_list' key: 'My Upcoming Appointments' %}
+              </div>
+              <hr>
+              <br>
+              <br>
+        </div>
+        <div class="col-md-6">
+          <div style="margin-bottom: 20px;"> 
+            <h3 class="section-title show-bar" style="color: darkblue;" >My Dependents</h3> 
+            <h5 class="section-title show-bar" style="color: #808080;" >List of the patient's dependents.</h5> 
+            {% include 'entity_list' key: 'My Dependents' %}
+          </div>
+          <hr>
+          <br>
+          <br>
+        </div>
+      </div>
+        <div class="row" style="margin-bottom: 20px; background-color: rgba(255, 255, 255); padding: 20px; border-radius: 5px;" ></div>
+          <div class="col-md-6">
+            <div style="margin-bottom: 20px;"> 
+              <h3 class="section-title show-bar" style="color: darkblue;" >My Dependents Appointments</h3> 
+              <h5 class="section-title show-bar" style="color: #808080;" >List of all dependent's appointments.</h5> 
+              {% include 'entity_list' key: 'My Dependents Appointments' %}
+            </div>
+            <hr>
+            <br>
+            <br>
+          </div>
+          <div class="col-md-6">
+            <div style="margin-bottom: 20px;"> 
+              <h3 class="section-title show-bar" style="color: darkblue;" >Popular Articles</h3> 
+              <h5 class="section-title show-bar" style="color: #808080;" >List of popular articles.</h5>
+              {% include 'entity_list' key: '"Closed Open Program Enrollments" Entity List' %}
+            </div>
+            <hr>
+            <br>
+            <br>
+          </div>
+            {% endif %}
+
+            {% if page.adx_entityform %}
+                {% entityform id: page.adx_entityform.id %}
+            {% endif %}
+
+            {% if page.adx_webform %}
+                {% webform id: page.adx_webform.id %}
+            {% endif %}
+            {% endblock %}
+        </div>
+    </div> 
+</section>
+    
+    

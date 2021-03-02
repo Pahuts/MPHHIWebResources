@@ -1,0 +1,121 @@
+<section class="header-section">
+  <div class="container-fluid">
+    <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="3000" id="bs-carousel">
+      <!-- Overlay -->
+
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item slides active">
+          <div class="slide-1">
+              <div class="overlay"></div>
+          </div>
+          <div class="hero">
+            <hgroup>
+                <h1>METRO PACIFIC HOSPITALS TELEHEALTH PORTAL</h1>        
+                <h3>We care for your health.</h3>
+            </hgroup>
+            <button class="btn btn-hero btn-lg" role="button" onclick="location.href = '/new-appointment/';">Book an appointment</button>
+          </div>
+        </div>
+        <div class="item slides">
+          <div class="slide-2">
+              <div class="overlay"></div>
+          </div>
+          <div class="hero">        
+            <hgroup>
+                <h1>METRO PACIFIC HOSPITALS TELEHEALTH PORTAL</h1>        
+                <h3>We care for your health.</h3>
+            </hgroup>       
+            <button class="btn btn-hero btn-lg" role="button" onclick="location.href = '/new-appointment/';">Book an appointment</button>
+          </div>
+        </div>
+        <div class="item slides">
+          <div class="slide-3">
+              <div class="overlay"></div>
+          </div>
+          <div class="hero">        
+            <hgroup>
+                <h1>METRO PACIFIC HOSPITALS TELEHEALTH PORTAL</h1>        
+                <h3>We care for your health.</h3>
+            </hgroup>
+            <button class="btn btn-hero btn-lg" role="button" onclick="location.href = '/new-appointment/';">Book an appointment</button>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+</section>
+{% if user | has_role:"Authenticated Users" %}
+  <section class = "appointments-section">
+    <div class="appointments-entitylists">
+      <div class ="container">
+      <!-- Start of Appointment Lists -->
+        <div class="row" style="margin-bottom: 20px; background-color: rgba(255, 255, 255); padding: 20px; border-radius: 5px;" >
+          <div class="col-md-6">
+            {% block main %}
+              {% if page.adx_entitylist %}
+                <div style="margin-bottom: 20px;"> 
+                  <h3 class="section-title show-bar" style="color: #5BBA47!important;" >My Upcoming Appointments</h3> 
+                  <h5 class="section-title show-bar" style="color: #808080;" >List of the patient's upcoming appointments.</h5>
+                  {% include 'entity_list' key: 'My Upcoming Appointments' %}
+                </div>
+                <hr>
+                <br>
+                <br>
+          </div>
+          <div class="col-md-6">
+            <div style="margin-bottom: 20px;"> 
+              <h3 class="section-title show-bar" style="color: #5BBA47!important;" >My Dependents</h3> 
+              <h5 class="section-title show-bar" style="color: #808080;" >List of the patient's dependents.</h5> 
+              {% include 'entity_list' key: 'My Dependents' %}
+            </div>
+            <hr>
+            <br>
+            <br>
+          </div>
+        </div>
+          <div class="row" style="margin-bottom: 20px; background-color: rgba(255, 255, 255); padding: 20px; border-radius: 5px;" ></div>
+            <div class="col-md-6">
+              <div style="margin-bottom: 20px;"> 
+                <h3 class="section-title show-bar" style="color: #5BBA47 !important;" >My Dependents' Appointments</h3> 
+                <h5 class="section-title show-bar" style="color: #808080;" >List of all dependent's appointments.</h5> 
+                {% include 'entity_list' key: 'My Dependents Appointments' %}
+              </div>
+              <hr>
+              <br>
+              <br>
+            </div>
+            <div class="col-md-6">
+              <div style="margin-bottom: 20px;"> 
+                <h3 class="section-title show-bar" style="color: #5BBA47!important;" >Popular Articles</h3> 
+                <h5 class="section-title show-bar" style="color: #808080;" >List of popular articles.</h5>
+                {% include 'entity_list' key: '"Closed Open Program Enrollments" Entity List' %}
+              </div>
+              <hr>
+              <br>
+              <br>
+            </div>
+              {% endif %}
+
+              {% if page.adx_entityform %}
+                  {% entityform id: page.adx_entityform.id %}
+              {% endif %}
+
+              {% if page.adx_webform %}
+                  {% webform id: page.adx_webform.id %}
+              {% endif %}
+              {% endblock %}
+          </div>
+        </div>
+      </div> 
+    </div>
+  </section>
+{% endif %}
+    
