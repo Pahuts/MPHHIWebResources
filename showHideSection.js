@@ -7,6 +7,6 @@ function showHideSection(executionContext){
       formContext.ui.tabs.get("tb_general").sections.get("tb_general_section_6").setVisible(true);
     } else {
       formContext.ui.tabs.get("tb_general").sections.get("tb_general_section_6").setVisible(false);
-    }
+    } 
   }
 }
