@@ -20,5 +20,18 @@ function doctorsFormLoad(executionContext) {
   // Xrm.Page.getAttribute("new_myfield").setRequiredLevel("recommended"); //Business Recommended
   formContext.getAttribute("mphhi_doctor").setRequiredLevel("required"); // Business Required
   //formContext.getAttribute("msemr_actorpatient").setRequiredLevel("none"); // Business Required
+  var workHour = formContext.getAttribute("mphhi_workhour").setValue(true);
+}
+
+function setWorkHoursDevField(executionContext) {  
+  alert("Start");
+  var formContext = executionContext.getFormContext(); 
+  var workHour = formContext.getAttribute("mphhi_workhour").getValue();
+    if (workHour == false) {
+      var newAppStatus = formContext.getAttribute("mphhi_workhourdevfield").setValue("No");
+    } else if (workHour == true) {
+      var newAppStatus = formContext.getAttribute("mphhi_workhourdevfield").setValue("Yes");
+    }
+    alert(workHour);
 }
 

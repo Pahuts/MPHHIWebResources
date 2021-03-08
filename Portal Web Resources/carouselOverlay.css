@@ -83,14 +83,19 @@ Image credits: unsplash.com
 /*          Custom Buttons      */
 /********************************/
 .btn.btn-lg {padding: 10px 40px;}
-.btn.btn-hero,
-.btn.btn-hero:hover,
-.btn.btn-hero:focus {
+.btn.btn-hero
+{
     color: #f5f5f5;
     background-color: #1abc9c;
     border-color: #1abc9c;
     outline: none;
     margin: 20px auto;
+}
+
+.btn.btn-hero:hover,
+.btn.btn-hero:focus {
+  background-color:#3f8331 !important;
+  border-color:#3f8331 !important;
 }
 
 /********************************/
