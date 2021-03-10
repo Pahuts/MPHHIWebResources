@@ -1,3 +1,7 @@
+.header-caption {
+  font-family: cursive;
+  margin-top: 0;
+}
 .fade-carousel .carousel-indicators > li.active {
   width: 50px;
   height: 5px;
@@ -136,7 +140,7 @@ transition-property: opacity;
   padding: 0;
 }
 
-/* this makes the carousel transition smoother -- fades in/out smoother */
+
 .carousel-inner > .item {
   opacity: 0;
   top: 0;
@@ -173,4 +177,36 @@ transition-property: opacity;
 }
 .carousel-control {
   z-index: 4;
+}
+
+.header-caption {
+  font-size: 17.5px;
+  font-weight: 500;
+  color: #666666;
+}
+
+.btn.btn-lg {padding: 10px 40px;}
+.btn.btn-hero {
+    color: #f5f5f5;
+    background-color: #5BBA47!important;
+    border-color: #5BBA47!important;
+    outline: none;
+    margin: 20px auto;
+    width: 511px;
+    height: 70px;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 1200px) { 
+    .btn.btn-hero {
+      width: 380px;
+      height: 70px;
+      font-size: 20px;
+    }
+}
+
+.btn.btn-hero:hover,
+.btn.btn-hero:focus {
+  background-color:#3f8331 !important;
+  border-color:#3f8331 !important;
 }
