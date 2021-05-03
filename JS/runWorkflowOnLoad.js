@@ -10,9 +10,11 @@ function runWorkflowOnLoad(executionContext)
 		if (opptyID != null || opptyID != "")
 		{
 			var contactLookup = formContext.getAttribute("parentcontactid").getValue()[0]; 
-			var contactName = contactLookup.name;
-			console.log(contactLookup);
-			console.log(contactName);
+			if (contactLookup) {
+				var contactName = contactLookup.name;
+				console.log(contactLookup);
+				console.log(contactName);
+			}
 		}
 	
 			if (contactName != null || contactName != "") 

@@ -1,0 +1,31 @@
+{% extends 'Layout 1 Column' %}
+{% block main %}
+<div class="container" role="main">
+   <!-- {% include 'Child Navigation' showdescriptions: true %} -->
+    <div class="page-heading">
+        <h1>
+            My Dependent/s Upcoming Appointments
+        </h1>
+        <br>
+        <br>
+    </div>
+    {% if page.adx_entitylist %}
+    <!--<h3 class="section-title show-bar" style="color: #5BBA47!important;">My Dependent/s Appointments</h3> 
+    <h5 class="section-title show-bar" style="color: #808080;">List of the patient's dependents upcoming appointments.</h5>
+    -->
+    
+    {% include 'entity_list' key: page.adx_entitylist.id %}
+    {% endif %}
+
+    {% if page.adx_entityform %}
+    {% entityform id: page.adx_entityform.id %}
+    {% endif %}
+
+    {% if page.adx_webform %}
+    {% webform id: page.adx_webform.id %}
+    {% endif %}
+    
+    <h2>My Dependent/s Appointments</h2>
+    {% include 'entity_list' key: "My Dependents Appointments" %}
+</div>
+{% endblock %}

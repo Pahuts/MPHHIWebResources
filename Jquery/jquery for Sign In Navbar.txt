@@ -1,0 +1,5 @@
+$(document).ready(function () {
+  if($('[aria-label="Sign In"]').length && !$("[aria-label='Home']").hasClass("active-nav")){
+    $('a[role="menuitem"][aria-label="Sign In"]').addClass("active-nav");
+  }
+});

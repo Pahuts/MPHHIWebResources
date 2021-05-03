@@ -1,0 +1,26 @@
+{% extends 'Layout 1 Column' %}
+{% block main %}
+  {% include 'Page Copy' %}
+<div class="container" role="main">
+  <!--{% include 'Child Navigation' showdescriptions: true %}-->
+  <div class="page-heading">
+    <h1>
+      My Personal Appointments
+    </h1>
+    <br>
+    <br>
+  </div>
+  {% if page.adx_entityform %}
+  {% entityform id: page.adx_entityform.id %}
+  {% endif %}
+
+  {% if page.adx_webform %}
+  {% webform id: page.adx_webform.id %}
+  {% endif %}
+
+  <h2>Doctor's Appointments</h2>
+  {% include 'entity_list' key: "Doctor's Appointments" %}
+  <h2>Outpatient Services Appointments</h2>
+  {% include 'entity_list' key: "Outpatient Services Appointments" %}
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+// add active class to nav link
+$('a[role="menuitem"][aria-label="About us"]').addClass("active-nav");
+
+/* Active class for navbar */
+.active-nav {
+  color:white !important;
+  background-color: #5BBA47;
+}
+
+
+// for the profile page
+// add active class to nav link
+$('a[role="menuitem"][aria-haspopup="true"]').addClass("active-nav");

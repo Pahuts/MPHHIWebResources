@@ -12,33 +12,18 @@
       <div class="carousel-inner">
         <div class="item active">
           <img src="la.jpg" alt="Los Angeles">
-          <div class="hero">
-            <hgroup>
-                <h1>METRO PACIFIC HOSPITALS TELEHEALTH PORTAL</h1>
-            </hgroup>
-          </div>
         </div>
 
         <div class="item">
           <img src="chicago.jpg" alt="Chicago">
-          <div class="hero">
-            <hgroup>
-                <h1>METRO PACIFIC HOSPITALS TELEHEALTH PORTAL</h1>
-            </hgroup>
-          </div>
         </div>
 
         <div class="item">
           <img src="ny.jpg" alt="New York">
-          <div class="hero">
-            <hgroup>
-                <h1>METRO PACIFIC HOSPITALS TELEHEALTH PORTAL</h1>
-            </hgroup>
-          </div>
         </div>
       </div>
 
-      <!-- Left and right controls -->
+      <!-- Left and right controls 
       <a class="left carousel-control" href="#myCarousel" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left"></span>
         <span class="sr-only">Previous</span>
@@ -47,8 +32,31 @@
         <span class="glyphicon glyphicon-chevron-right"></span>
         <span class="sr-only">Next</span>
       </a>
+      -->
     </div>
   </div>
+</section>
+<section class = "header-caption-section">
+ <div class = "container">
+  <div class="row">
+    <div class="page-heading">
+      {% block title %}
+          {% editable snippets 'MPHHI Header' type: 'HTML' %}
+      {% endblock %}
+  </div>
+    <h3 class="header-caption text-center">Metro Pacific Hospital Holdings, Inc. is the largest private hospital operator in the Philippines. It has a nationwide portfolio of 18 hospitals, supported by 2 allied health colleges, a growing network of primary care clinics and cancer care centers, and a central clinical laboratory.</h3>
+  </div>
+  {% if user | has_role:"Authenticated Users" %}
+    <div class="row text-center">
+      <div class="col-md-6">
+        <button class="btn btn-hero btn-lg" onclick="window.location.href='/new-appointment'">Book an Appointment</button>
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-hero btn-lg" onclick="window.location.href='/find-a-doctor/'">Find a Doctor</button>
+      </div>    
+    </div>
+  {% endif %}
+ <div>
 </section>
 {% if user | has_role:"Authenticated Users" %}
   <section class = "appointments-section">

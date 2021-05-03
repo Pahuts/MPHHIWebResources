@@ -1,0 +1,74 @@
+<section>
+  <div class="container" style="margin-bottom: 20vh;">
+      <div class="page-heading">
+          {% block breadcrumbs %}
+              {% include 'Breadcrumbs' %}
+          {% endblock %}
+          {% block title %}
+              {% include 'Page Header' %}
+          {% endblock %}
+      </div>
+      <!-- START ABOUT US --> 
+      <div class="page-heading">
+          <h1>
+              <span class="xrm-attribute xrm-editable-text"><span class="xrm-attribute-value">About Us</span></span>
+          </h1>
+          <br>
+          <br>
+      </div>
+      <div class="row" style="margin-bottom: 20px;  background-color: rgba(255, 255, 255, 0.8); " >
+          <div class="container">
+              <img class="aboutus-image" src="../groupofpeople.jpg" alt="groupofpeople">
+          </div>
+          <div class="col-md-10 col-md-offset-1" style="padding: 0 15px;">
+              <div id="main-block-wrapper">
+                  <div class="col-md-12">
+                      {% block main %}
+      
+                      {% include 'Page Copy' | liquid %}
+      <!--
+                      {% if page.adx_entitylist %}
+                          {% include 'entity_list' key:page.adx_entitylist.id %}
+                      {% endif %}
+      
+                      {% if page.adx_entityform %}
+                          {% entityform id: page.adx_entityform.id %}
+                      {% endif %}
+      
+                      {% if page.adx_webform %}
+                          {% webform id: page.adx_webform.id %}
+                      {% endif %}
+      -->
+                      
+                  {% endblock %}
+
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- END ABOUT US --> 
+      <!-- START OUR HOSPITALS --> 
+      <div class="page-heading ourhospitals-header">
+          <h1>
+              <span class="xrm-attribute xrm-editable-text"><span class="xrm-attribute-value">Our Hospitals</span></span>
+          </h1>
+      </div>
+      <div class="row" style="margin-bottom: 20px;  background-color: rgba(255, 255, 255, 0.8); " >
+          <div class="col-md-10 col-md-offset-1" style="padding: 0 15px;">
+              <div id="ourHospitals">
+                  <div class="col-md-4">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+                  <div class="col-md-4">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+                  <div class="col-md-4">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- END OUR HOSPITALS --> 
+  </div>
+</section>

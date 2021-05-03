@@ -20,11 +20,16 @@ function doctorsFormLoad(executionContext) {
   // Xrm.Page.getAttribute("new_myfield").setRequiredLevel("recommended"); //Business Recommended
   formContext.getAttribute("mphhi_doctor").setRequiredLevel("required"); // Business Required
   //formContext.getAttribute("msemr_actorpatient").setRequiredLevel("none"); // Business Required
-  var workHour = formContext.getAttribute("mphhi_workhour").setValue(true);
+  var startTime = formContext.getAttribute("mphhi_starttimedev").getValue();
+  if(startTime) {
+    console.log("Start time contains data");
+  }else {
+    var workHour = formContext.getAttribute("mphhi_workhour").setValue(true);
+  }
+  
 }
 
 function setWorkHoursDevField(executionContext) {  
-  alert("Start");
   var formContext = executionContext.getFormContext(); 
   var workHour = formContext.getAttribute("mphhi_workhour").getValue();
     if (workHour == false) {
@@ -32,6 +37,6 @@ function setWorkHoursDevField(executionContext) {
     } else if (workHour == true) {
       var newAppStatus = formContext.getAttribute("mphhi_workhourdevfield").setValue("Yes");
     }
-    alert(workHour);
+    console.log(newAppStatus);
 }
 

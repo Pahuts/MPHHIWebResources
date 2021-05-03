@@ -13,6 +13,7 @@
   </div>
     <h3 class="header-caption text-center">Metro Pacific Hospital Holdings, Inc. is the largest private hospital operator in the Philippines. It has a nationwide portfolio of 18 hospitals, supported by 2 allied health colleges, a growing network of primary care clinics and cancer care centers, and a central clinical laboratory.</h3>
   </div>
+  {% if user | has_role:"Authenticated Users" %}
     <div class="row text-center">
       <div class="col-md-6">
         <button class="btn btn-hero btn-lg" onclick="window.location.href='/new-appointment'">Book an Appointment</button>
@@ -21,6 +22,7 @@
         <button class="btn btn-hero btn-lg" onclick="window.location.href='/find-a-doctor/'">Find a Doctor</button>
       </div>    
     </div>
+  {% endif %}
  <div>
 </section>
 {% if user | has_role:"Authenticated Users" %}
@@ -32,7 +34,7 @@
           <div class="col-md-6">
             {% block main %}
               {% if page.adx_entitylist %}
-                <div> 
+                <div style="margin-bottom: 20px;"> 
                   <h3 class="section-title show-bar" style="color: #5BBA47!important;" >My Upcoming Appointments</h3> 
                   <h5 class="section-title show-bar" style="color: #808080;" >List of the patient's upcoming appointments.</h5>
                   {% include 'entity_list' key: 'My Upcoming Appointments' %}
@@ -42,9 +44,9 @@
                 <br>
           </div>
           <div class="col-md-6">
-            <div> 
+            <div style="margin-bottom: 20px;"> 
               <h3 class="section-title show-bar" style="color: #5BBA47!important;" >My Dependent/s Upcoming Appointments</h3> 
-              <h5 class="section-title show-bar" style="color: #808080;" >List of the patient's dependents upcoming appointments.</h5> 
+              <h5 class="section-title show-bar" style="color: #808080;" >List of all dependent's appointments.</h5> 
               {% include 'entity_list' key: 'My Dependents Appointments' %}
             </div>
             <hr>
@@ -56,7 +58,7 @@
             <div class="col-md-6">
               <div style="margin-bottom: 20px;"> 
                 <h3 class="section-title show-bar" style="color: #5BBA47 !important;" >My Dependents</h3> 
-                <h5 class="section-title show-bar" style="color: #808080;" >List of patient's dependents</h5> 
+                <h5 class="section-title show-bar" style="color: #808080;" >List of the patient's dependents upcoming appointments.</h5> 
                 {% include 'entity_list' key: 'My Dependents' %}
               </div>
               <hr>

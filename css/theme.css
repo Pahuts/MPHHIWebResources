@@ -1832,12 +1832,20 @@ textarea {
   100% { transform: rotate(360deg); }
 }
 
-@font-face {
+/* heading/title font */
+@font-face { 
     font-family: 'Cocogoose';
     src: url("../cocogoose.ttf");
     src: url("cocogoose.ttf") format("truetype");
 }
+/* Paragraph/Caption font */
+@font-face {
+    font-family: 'Open Sans';
+    src: url("../opensansregular.ttf");
+    src: url("opensansregular.ttf") format("truetype");
+}
 
+/* MPHHI Font in their website */
 @font-face {
     font-family: 'DM Sans';
     src: url("../DMSans.ttf");
@@ -1851,4 +1859,8 @@ textarea {
         font-weight: 600;
         font-size: 22px;
     }
+}
+
+.navbar-static-top.navbar .menu-bar > .navbar-nav > .divider-vertical {
+  display: none;
 }
