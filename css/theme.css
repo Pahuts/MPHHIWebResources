@@ -1752,58 +1752,74 @@ h3 {
 }
 
 .navbar-inverse .navbar-nav > li > a:hover {
-color: #5BBA47 !important;
-background-color: white !important;
+color: white !important;
+background-color: #5BBA47 !important;
 }
 .navbar-inverse .navbar-nav > li > a:focus {
-color: #5BBA47 !important;
-background-color: white !important;
+color: white !important;
+background-color: #5BBA47 !important;
 }
 .navbar-inverse .navbar-nav > li > a:active {
-color: #5BBA47 !important;
-background-color: white !important;
+color: white !important;
+background-color: #5BBA47 !important;
 }
 
 .navbar-inverse .navbar-nav > .open > a .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-color: #5BBA47 !important;
-background-color: white !important;
-
+color: white !important;
+background-color: #5BBA47 !important;
 }
 .navbar-inverse .navbar-nav .open .dropdown-menu > li > a, :focus {
-    color: black !important;
-    background-color: white !important;
+    color: black;
+    margin-left: 0;
 }
 
 .navbar-inverse .navbar-nav .open .dropdown-menu {
-    color: #5BBA47 !important;
+    /* color: white !important; */
     background-color: white !important;
 }
 
 .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover {
     /*color: #3f8331 !important; */
-    color: #5BBA47 !important;
-    background-color: white !important;
+    color: white !important;
+    background-color: #5BBA47 !important;
+    margin-left: 0;
 }
 
+
+
 .navbar-inverse .navbar-toggle {
-    border-color:#5BBA47;
-    background-color: #5BBA47;
+    border:none;
+    background-color: none;
 }
 
 .navbar-inverse .navbar-toggle:hover{
-    border-color:#3f8331 !important;
-    background-color:#3f8331 !important;
+    border:none;
+    background-color: #c4c4c4;
 }
 
 .navbar-inverse .navbar-toggle:focus {
-    border-color:#3f8331 !important;
-    background-color:#3f8331 !important;
+    border:none;
+    background-color: #c4c4c4;
 }
 .navbar-inverse .navbar-toggle:active {
-    border-color:#3f8331 !important;
-    background-color:#3f8331 !important;
+    border:none;
+    background-color: #c4c4c4;
 }
 
+.glyphicon-align-left:before {
+    color: green;
+    font-size: 25px;
+}
+
+button.navbar-toggle.collapsed {
+    background-color: white;
+    border: none;
+}
+
+button.navbar-toggle {
+    background-color: white;
+    border: none;
+}
 
 
 /* ============== */
@@ -1854,7 +1870,7 @@ textarea {
 
 @media only screen and (max-width: 800px) {
     #mphhiHeader {
-        color: darkblue;
+        color: #0f4b90;
         font-family: 'Cocogoose', sans-serif ;
         font-weight: 600;
         font-size: 22px;
@@ -1863,4 +1879,97 @@ textarea {
 
 .navbar-static-top.navbar .menu-bar > .navbar-nav > .divider-vertical {
   display: none;
+}
+
+/* custom colors for tables and buttons */
+.table>thead>tr>th {
+  color: #5BBA47!important;
+}
+
+
+.btn-primary {
+  color: white !important;
+  background-color: #5BBA47!important;
+  border-color: #3f8331 !important;
+}
+
+.btn-primary:hover {
+  color: white !important;
+  background-color: #3f8331 !important;
+  border-color: #3f8331 !important;
+}
+
+.input-group-btn .btn {
+  color: #5BBA47!important;
+  border-color: #5BBA47!important;
+}
+
+.input-group .form-control {
+  border-color: #5BBA47!important;
+}
+
+.btn-default {
+  color: #5BBA47!important;
+  border-color: #5BBA47!important;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #000;
+}
+
+.table>thead>tr>th> a {
+  color: #5BBA47!important;
+}
+
+/* custom font and size for page headings */
+.page-heading > h1 {
+  font-family: 'Cocogoose';
+  font-weight: bold;
+  color: #0f4b90;
+  padding-top: 0;
+  font-size: 2em;
+}
+
+#navbar .dropdown-menu {
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.navbar-static-top.navbar .menu-bar > .navbar-nav > li > a {
+    height: 64px;
+    padding-top: 21px;
+    margin-top: -6px;
+    margin-right: -3px;
+}
+
+.navbar-static-top.navbar-inverse {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+/* Active class for navbar */
+.active-nav {
+  color:white !important;
+  background-color: #5BBA47;
+}
+
+/* Edit text-area borders */
+.crmEntityFormView .cell input[type=text], .crmEntityFormView .cell select, .crmEntityFormView .cell textarea {
+    border-color: #5BBA47;
+}
+
+/* Remove default border colors */
+.crmEntityFormView, .entitylist {
+    border: none;
+}
+
+/* Change tab-title style */
+.crmEntityFormView .tab-title {
+    font-family: 'Cocogoose';
+    color: #5BBA47;
+}
+/* Change border-radius */
+.form-control {
+    border-radius: 5px;
 }

@@ -1,8 +1,42 @@
 function hideAddWorkingHoursButton(selectedCtrl) {       
-  var urlParams = new URLSearchParams(Xrm.Page.getUrl()); // get url of current page
-  var viewId = urlParams.get("viewid").replace("{","").replace("}",""); // replaces "{ }" if ever view id is encasulated by brackets
+  var urlParams = new URLSearchParams(Xrm.Page.getUrl());
+  var viewId = urlParams.get("viewid").replace("{","").replace("}","");
   console.log("viewId: " + viewId);
+    /*
+    viewId: 61273827-328E-E011-95AE-00155D9CFA03
+    */   
+    
     if (viewId != 'B0CA9D10-977A-EB11-A812-000D3A8BEA6F') {
+        return false;
+    }
+    else
+        return true;
+}
+
+function hideNewAppointmentButton(selectedCtrl) {       
+  var urlParams = new URLSearchParams(Xrm.Page.getUrl());
+  var viewId = urlParams.get("viewid").replace("{","").replace("}","");
+  console.log("viewId: " + viewId);
+    /*
+    viewId: 61273827-328E-E011-95AE-00155D9CFA03
+    */   
+    
+    if (viewId == '21353D06-062F-4889-B4C2-C3DB40489871') {
+        return false;
+    }
+    else
+        return true;
+}
+
+function hideCreateWorkHourButton(selectedCtrl) {       
+  var urlParams = new URLSearchParams(Xrm.Page.getUrl());
+  var viewId = urlParams.get("viewid").replace("{","").replace("}","");
+  console.log("viewId: " + viewId);
+    /*
+    viewId: 61273827-328E-E011-95AE-00155D9CFA03
+    */   
+    
+    if (viewId != '21353D06-062F-4889-B4C2-C3DB40489871') {
         return false;
     }
     else

@@ -44,6 +44,7 @@ function retrieveMedicationRecords(executionContext) {
         );
         // end of retrieve function
         var prescriptionCopied = formContext.getAttribute("mphhi_prescriptioncopied").setValue("Yes");
+        
       } else {
         return false;
       }

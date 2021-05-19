@@ -1,0 +1,27 @@
+<div class="wrapper-body">
+  <div class="container" role="main">
+    {% editable page 'adx_copy' %}
+  </div>
+  <div class="push"></div>
+  <h1 class="page-header">METRO PACIFIC HOSPITALS TELEHEALTH PORTAL</h1>
+  <br>
+  <br>
+
+    {% include 'Page Copy' | liquid %}
+
+    <div class="container" role="main">
+      <p class="page-caption"> Health Declaration Form </p>
+        {% if page.adx_entitylist %}
+            {% include 'entity_list' key:page.adx_entitylist.id %}
+        {% endif %}
+
+        {% if page.adx_entityform %}
+            {% entityform id: page.adx_entityform.id %}
+        {% endif %}
+
+        {% if page.adx_webform %}
+            {% webform id: page.adx_webform.id %}
+        {% endif %}
+    </div>
+  </div>
+</div>

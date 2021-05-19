@@ -1,0 +1,87 @@
+
+
+    {% fetchxml associated_doctors %}
+        <fetch version="1.0" mapping="logical">
+            <entity name="mphhi_associatedhospital">
+                <attribute name="mphhi_associatedhospitalid" />
+                <attribute name="mphhi_name" />
+                <attribute name="mphhi_hospital" />
+                <attribute name="mphhi_doctor" />
+                <attribute name="mphhi_doctorscode" />
+                <attribute name="mphhi_professionalfeefacetoface" />
+                <attribute name="mphhi_professionalfee" />
+                <attribute name="mphhi_department" />
+                <attribute name="mphhi_clinic" />
+                <attribute name="mphhi_schedule" />
+                <attribute name="statecode" />
+                <order attribute="ndph_displayorder" descending="true" />
+                <filter>
+                    <condition attribute="statecode" operator="eq" value="0" />
+                </filter>
+            </entity>
+        </fetch>
+    {% endfetchxml %}
+    <div class="col-lg-12 col-md-12 col-xs-12">
+        <div class="pull-right toolbar-actions">
+            <div class="input-group pull-left view-search entitylist-search">
+                <input placeholder="Search" title="" id="searchInput" class="query form-control">
+                <div class="input-group-btn" role="presentation">
+                    <button type="button" id="searchButton" aria-label="Search Results" title="Search Results" class="btn btn-default">
+                        <span class="sr-only">Search Results</span><span class="fa fa-search"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <table id="doctorsTable" class="col-lg-12 col-md-12 col-xs-12">
+    {% assign is_auth = user | has_role: 'Authenticated Users' %}
+    {% for doctor in associated_doctors.results.entities %}
+        
+            <tr style="border-bottom: 1px solid lightslategrey" >
+                <td class="searchable" style="padding-top: 20px;">
+                    <span style="text-transform: uppercase; color: #6E3476; font-weight:bold;  padding-top: 30px;">{{ doctor.mphhi_name }}</span><br />
+                    <span style="text-transform: uppercase; color: #7F7F7F">{{ doctor.mphhi_name }}</span> <br />
+                    <span>
+                        {% if doctor.ndph_description == empty %}
+                        This doctor does not have a description.
+                        {% else %}
+                            {{ doctor.ndph_description }}
+                        {% endif %}
+                    </span> <br />
+                    <span style="float :right; padding-top: 10px; padding-bottom: 20px;">
+                        {% if is_auth %}
+                        <!-- <a class="btn btn-primary" href="{{ adx_primarydomainname }}/applications/new-application/?id={{ doctor.mphhi_associatedhospitalid }}">
+                            Apply Now
+                        </a>
+                        <a class="btn btn-default" href="{{ adx_primarydomainname }}/inquiries/new-inquiry/?id={{ doctor.mphhi_associatedhospitalid }}">
+                            Inquire
+                        </a>
+                        {% else %}
+                        <a class="btn btn-primary" href="{{ adx_primarydomainname }}/apply-now/?id={{ doctor.mphhi_associatedhospitalid }}">
+                            Apply Now
+                        </a>
+                        <a class="btn btn-default" href="{{ adx_primarydomainname }}/inquire-now/?id={{ doctor.mphhi_associatedhospitalid }}">
+                            Inquire
+                        </a> -->
+                        {% endif %}
+                    </span>
+                </td>
+            </tr>
+    {% endfor %}
+    </table>
+<hr />
+
+<script>
+$(document).ready(function(){
+    
+    $("#searchInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#programTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});
+</script>
+
