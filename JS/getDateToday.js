@@ -10,7 +10,7 @@ function getDateToday(executionContext) {
   console.log(monthFullName + dayNow + yearNow); // show date date today
 
   var dateTodayTextField = formContext.getAttribute("mphhi_datetoday").getValue();
-  dateTodayTextField = formContext.getAttribute("mphhi_datetoday").setValue(monthFullName + dayNow + yearNow);
+  dateTodayTextField = formContext.getAttribute("mphhi_datetoday").setValue(monthFullName + " " + dayNow + " " +yearNow);
 
   // get Date Today + 2
   // get correct month format
@@ -26,6 +26,6 @@ function getDateToday(executionContext) {
   var dayPlus2 = parseInt(dayNow) + 2;
 
   var dateToday2TextField = formContext.getAttribute("mphhi_datetodayplus2").getValue();
-  dateToday2TextField = formContext.getAttribute("mphhi_datetodayplus2").setValue(getMonthString + " " + dayPlus2 + " " + yearNow);
+  dateToday2TextField = formContext.getAttribute("mphhi_datetodayplus2").setValue(getMonthString + "/" + dayPlus2 + "/" + yearNow);
   
 }

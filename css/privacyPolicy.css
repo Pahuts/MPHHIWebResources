@@ -1,3 +1,7 @@
+main > ol {
+  font-size: 16px !important;
+  font-family: 'Open Sans', san-serif;
+}
 h5 {
   line-height: 1.42857;
 }
@@ -10,13 +14,15 @@ ul {
 
 /* PARAGRAPH */
 .paragraph-title {
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', san-serif;
     font-weight: bold;
 }
 .paragraph-caption {
   font-family: 'Open Sans';
 }
-
+.paragraph-caption li {
+  font-size: 16px;
+}
 /* Table */
 
 table {

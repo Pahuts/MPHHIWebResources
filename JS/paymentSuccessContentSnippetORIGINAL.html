@@ -1,0 +1,64 @@
+<style type="text/css">
+    p {
+        margin: 0;
+    }
+    .classicbutton {
+    margin: 5px;
+    float: left;
+    }
+    .classicdefaultbutton {
+       margin: 5px;
+    float: left; 
+    }
+
+    /* sets the buttons to full width when screen is for mobile */
+    @media only screen and (max-width: 450px) {
+        .classicbutton {
+            width: 100% !important;;
+            margin-left: 0 !important; 
+            margin-right: 0 !important; 
+            margin-top: 5px;
+        }   
+        .classicdefaultbutton {
+            width: 100% !important;;
+            margin-top: 5px !important;
+            margin-left: 0 !important; 
+            margin-right: 0 !important; 
+        }   
+        p {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        footer .footer-bottom p {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }   
+</style><h2 id="page-header-text" style="text-align: center; color: #000;">Payment Successful!</h2>
+<div id="pageDesc" style="text-align: center; color: #000;">
+    <p>For questions, please contafct us at support@mphhi.com or (02) 123-456-78 </p>
+</div>
+
+<div class="pull-right" id="buttons_Submission">
+    <input class="btn btn-default form-action-container-right important classicdefaultbutton" id="Backtohome" onclick="goToHome()" style="text-transform: uppercase;" type="button" value="Back to Home">
+</div>
+<script>
+    /*Go to home Button function */
+    function goToHome() {
+        window.location.href = "../";
+    }
+
+    /* remove class on mobile */ 
+    $(window).resize(function(){
+    if ($(window).width() <= 450) {  
+       $('#buttons_Submission').removeClass("pull-right");
+    }     
+    else {
+        /*move buttons to the right*/
+        $('#buttons_Submission').addClass("pull-right"); 
+    }
+    
+    
+}); 
+</script>
+

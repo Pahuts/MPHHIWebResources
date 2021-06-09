@@ -1,0 +1,64 @@
+<script>
+$(document).ready(function() {
+    if (window.attachEvent){
+        window.attachEvent("onload", setFocus);
+    }
+    else{
+        window.addEventListener("load", setFocus, true);
+    }
+
+    function setFocus(){
+        var els = document.forms[0].elements;
+        for (var i = 0; i < els.length; i++){
+            if (els[i].type != "hidden"){
+                els[i].focus();
+                break;
+            }
+        }
+    }
+
+    history.pushState(null, null, $(window).attr("href"));
+    $(window).on("popstate", function (e) {
+        e.preventDefault();
+        window.location.href="../";
+    });
+});
+</script>
+<style>
+
+</style>
+<section style="background-color: rgb(255, 255, 255)">
+<div class="container" style="color: #ffffff; margin-bottom: 170px;">
+    <div class="page-heading">
+        {% block title %}
+            {% editable snippets 'MPHHI' type: 'HTML' %}
+        {% endblock %}
+    </div>
+
+    <div class="row" >
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+        
+            {% block main %}
+                {% editable snippets 'Payment Success' type: 'html' %}
+
+                {% include 'Page Copy' %}
+
+                {% if page.adx_entitylist %}
+                    {% include 'entity_list' key:page.adx_entitylist.id %}
+                {% endif %}
+
+                {% if page.adx_entityform %}
+                    {% entityform id: page.adx_entityform.id %}
+                {% endif %}
+
+                {% if page.adx_webform %}
+                    {% webform id: page.adx_webform.id %}
+                {% endif %}
+            {% endblock %}
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div> 
+</section>
+

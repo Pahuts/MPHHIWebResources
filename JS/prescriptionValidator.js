@@ -12,15 +12,12 @@ $(document).ready(function () {
         params[decodeURIComponent(query[0])] = decodeURIComponent(query[1]);
     }
 
-    var sliceDate = params['id'].slice(0, -8)
-    var docType = params['tp'];
-    var mdcId = params['id'];
-    if(docType == 'mdc') {
-      $(".consultation-date").append(sliceDate);
-    } else {
-      $(".consultation-date").append(sliceDate);
-    }
-    
+    var getPrescriptionDate = params['dt'];
+    var splitDate = getPrescriptionDate.split("/");
+    var prescDateString = splitDate[0] + "/" + splitDate[1] + "/" + splitDate[2];
+    // alert(splitDate[0] + "/" + splitDate[1] + "/" + splitDate[2]);
+
+    var docType = params['tp']; // parameter for doctype -- mdc lang naman yung doctype
 
     var dateToday = new Date(); // get date today
     //var time = dateToday.getHours() + ":" + dateToday.getMinutes() + ":" + dateToday.getSeconds(); // sample how to get each value from date today
@@ -30,34 +27,38 @@ $(document).ready(function () {
     var revertToStandardTime = parseDateTodayHoursToInt - 12; // subtract by 12 because javascript returns military time, this will convert it to normal time for better user experience
     // Parse Date today to Integer
     var parseMonthToInt = parseInt(dateToday.getMonth()+1);
+    if(parseMonthToInt == 13) { // pag january na
+      parseMonthToInt = 1;
+    }
+    // var parseMonthToInt = parseInt(dateToday.getMonth()+1);
     var parseDayToInt = parseInt(dateToday.getDate());
     var parseYearToInt = parseInt(dateToday.getFullYear());
     // Slice Prescription Consultation Date to each Month, Day, Year
-    var slicePresMonth = params['id'].slice(0, -16)
-    var slicePresDay = params['id'].slice(2, -13)
 
-    var parseConsultationMonthToInt = parseInt(slicePresMonth);
+    var splitMonth = splitDate[0];
+    var splitDay = splitDate[1];
+    var splitYear = splitDate[2];
+    var parseConsultationMonthToInt = parseInt(splitMonth); // parse month to int
 
-    if(parseConsultationMonthToInt > 9) { // check if year today is greater than 9
-      var slicePrescYear = params['id'].slice(6, -8)
-    } else {
-      var slicePrescYear = params['id'].slice(5, -8)
-    }
+    console.log("Year: " + splitYear) // for debugging purposes
+    
+    // Parse splitted Prescription Consultation Month, Day, Year to Integer
+    
+    var parseConsultationDayToInt = parseInt(splitDay); // parse day to int
+    var parseConsultationYearToInt = parseInt(splitYear); // parse year to int
 
-    console.log("Year: " + slicePrescYear)
-    
-    // Parse Sliced Prescription Consultation Month, Day, Year to Integer
-    
-    var parseConsultationDayToInt = parseInt(slicePresDay);
-    var parseConsultationYearToInt = parseInt(slicePrescYear);
-    
-    
-   if(docType == 'mdc'){
-      var mdcArray = mdc.split(" ");
-      var mdcMonth = mdcArray(0);
-      var mdcDay = parseInt(mdcArray(1));
-      var mdcYear = parseInt(mdcArray(2));
+    console.log("Date to INT =  " + parseConsultationMonthToInt + "/" + parseConsultationDayToInt + "/" + parseConsultationYearToInt); // for debugging purposes
 
+    // check if medical certificate
+    var mdcId = params['dt'];
+    var mdcArray = mdcId.split("/");
+    var mdcString = mdcArray[0] + "/" + mdcArray[1] + "/" + mdcArray[2];
+    if(docType == 'mdc') {
+      $(".consultation-date").append(mdcString);
+      var mdcMonth = parseInt(mdcArray[0]);
+      var mdcDay = parseInt(mdcArray[1]);
+      var mdcYear = parseInt(mdcArray[2]);
+      
       if(mdcYear < parseYearToInt) { // check if consultation date year is less than year now
         $('.box-logo').append('<img class="box-image" src="../error_icon.jpg" />');
         $(".box-cent").css("border-top", "solid 5px red");
@@ -70,7 +71,7 @@ $(document).ready(function () {
         $(".qr-code-state").append("Oh Snap!");
         $(".qr-content").append("The QR Code is not valid anymore. Please contact your doctor.");
         $(".qr-code-state").css("color", "red");
-      } else if(mdcDay < parseDayToInt && parseConsultationMonthToInt == mdcMonth && mdcYear == parseYearToInt) { // check if consultation date is less than date today
+      } else if(mdcDay < parseDayToInt && mdcMonth == parseMonthToInt && mdcYear == parseYearToInt) { // check if consultation date is less than date today
         $('.box-logo').append('<img class="box-image" src="../error_icon.jpg" />');
         $(".box-cent").css("border-top", "solid 5px red");
         $(".qr-code-state").append("Oh Snap!");
@@ -83,33 +84,32 @@ $(document).ready(function () {
         $(".qr-content").append("The QR Code is still valid. Please continue with the request.");
         $(".qr-code-state").css("color", "#5BBA47");
       }
-
-   } else {
-    if(parseConsultationYearToInt < parseYearToInt) { // check if consultation date year is less than year now
-      $('.box-logo').append('<img class="box-image" src="../error_icon.jpg" />');
-      $(".box-cent").css("border-top", "solid 5px red");
-      $(".qr-code-state").append("Oh Snap!");
-      $(".qr-content").append("The QR Code is not valid anymore. Please contact your doctor.");
-      $(".qr-code-state").css("color", "red");
-    } else if(parseConsultationMonthToInt < parseMonthToInt && parseConsultationYearToInt == parseYearToInt) { // check if consultation date month is less than month now
-      $('.box-logo').append('<img class="box-image" src="../error_icon.jpg" />');
-      $(".box-cent").css("border-top", "solid 5px red");
-      $(".qr-code-state").append("Oh Snap!");
-      $(".qr-content").append("The QR Code is not valid anymore. Please contact your doctor.");
-      $(".qr-code-state").css("color", "red");
-    } else if(parseConsultationDayToInt < parseDayToInt && parseConsultationMonthToInt == parseMonthToInt && parseConsultationYearToInt == parseYearToInt) { // check if consultation date is less than date today
-      $('.box-logo').append('<img class="box-image" src="../error_icon.jpg" />');
-      $(".box-cent").css("border-top", "solid 5px red");
-      $(".qr-code-state").append("Oh Snap!");
-      $(".qr-content").append("The QR Code is not valid anymore. Please contact your doctor.");
-      $(".qr-code-state").css("color", "red");
     } else {
-      $('.box-logo').append('<img class="box-image" src="../success_icon.jpg" />');
-      $(".box-cent").css("border-top", "solid 5px #5BBA47");
-      $(".qr-code-state").append("Awesome!");
-      $(".qr-content").append("The QR Code is still valid. Please continue with the request.");
-      $(".qr-code-state").css("color", "#5BBA47");
+      $(".consultation-date").append(prescDateString); 
+      if(parseConsultationYearToInt < parseYearToInt) { // check if consultation date year is less than year now
+        $('.box-logo').append('<img class="box-image" src="../error_icon.jpg" />');
+        $(".box-cent").css("border-top", "solid 5px red");
+        $(".qr-code-state").append("Oh Snap!");
+        $(".qr-content").append("The QR Code is not valid anymore. Please contact your doctor.");
+        $(".qr-code-state").css("color", "red");
+      } else if(parseConsultationMonthToInt < parseMonthToInt && parseConsultationYearToInt == parseYearToInt) { // check if consultation date month is less than month now
+        $('.box-logo').append('<img class="box-image" src="../error_icon.jpg" />');
+        $(".box-cent").css("border-top", "solid 5px red");
+        $(".qr-code-state").append("Oh Snap!");
+        $(".qr-content").append("The QR Code is not valid anymore. Please contact your doctor.");
+        $(".qr-code-state").css("color", "red");
+      } else if(parseConsultationDayToInt < parseDayToInt && parseConsultationMonthToInt == parseMonthToInt && parseConsultationYearToInt == parseYearToInt) { // check if consultation date is less than date today
+        $('.box-logo').append('<img class="box-image" src="../error_icon.jpg" />');
+        $(".box-cent").css("border-top", "solid 5px red");
+        $(".qr-code-state").append("Oh Snap!");
+        $(".qr-content").append("The QR Code is not valid anymore. Please contact your doctor.");
+        $(".qr-code-state").css("color", "red");
+      } else {
+        $('.box-logo').append('<img class="box-image" src="../success_icon.jpg" />');
+        $(".box-cent").css("border-top", "solid 5px #5BBA47");
+        $(".qr-code-state").append("Awesome!");
+        $(".qr-content").append("The QR Code is still valid. Please continue with the request.");
+        $(".qr-code-state").css("color", "#5BBA47");
+      }
     }
-   }
-
 });

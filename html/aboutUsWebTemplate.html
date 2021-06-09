@@ -1,61 +1,67 @@
-<section>
-  <div class="container" style="margin-bottom: 20vh;">
-      <div class="page-heading">
-          {% block breadcrumbs %}
-              {% include 'Breadcrumbs' %}
-          {% endblock %}
-          {% block title %}
-              {% include 'Page Header' %}
-          {% endblock %}
-      </div>
-      <!-- START ABOUT US --> 
-      <div class="page-heading">
-          <h1>
-              <span>About Us</span>
-          </h1>
-          <br>
-          <br>
-      </div>
-      <div class="row">
-              <img class="aboutus-image" src="../groupofpeople.jpg" alt="groupofpeople">
-          <div class="col-md-10 col-md-offset-1" style="padding: 0 15px;">
-              <div id="main-block-wrapper">
-                  <div class="col-md-12">
-                      {% block main %}
-      
-                      {% include 'Page Copy' | liquid %}
-      <!--
-                      {% if page.adx_entitylist %}
-                          {% include 'entity_list' key:page.adx_entitylist.id %}
-                      {% endif %}
-      
-                      {% if page.adx_entityform %}
-                          {% entityform id: page.adx_entityform.id %}
-                      {% endif %}
-      
-                      {% if page.adx_webform %}
-                          {% webform id: page.adx_webform.id %}
-                      {% endif %}
-      -->
-                      
-                  {% endblock %}
-
-                  <p class="page-caption">From its first investment in Makati Medical Center in 2007, Metro Pacific Hospital Holdings Inc. has since grown to be the largest private
-                  hospital group in the Philippines
-                  <br>
-                  <br>
-                  It has a portfolio of 18 hospitals in Luzon, Visayas, and Mindanao, with a combined authorized bed capacity of 3,600 beds.
-                  Its hospitals include the premier tertiary hospital names in the industry, if not the leading and largest hospital in the city.
-                  <br>
-                  <br>
-                  In addition, It is invested in allied health colleges, a growing network of primary care centers and cancer care centers, and a central
-                  clinical laboratory.</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <!-- END ABOUT US --> 
-      <!-- START OUR HOSPITALS --> 
+<div class="container">
+    <div class="page-heading">
+        {% block breadcrumbs %}
+            {% include 'Breadcrumbs' %}
+        {% endblock %}
+        {% block title %}
+            {% include 'Page Header' %}
+        {% endblock %}
+    </div>
+    <!-- START ABOUT US --> 
+    <div class="page-heading">
+        <h1>
+            <span>About Us</span>
+        </h1>
+        <br>
+        <br>
+    </div>
+    <div class="row" style="" >
+            <img class="aboutus-image" src="../groupofpeople.jpg" alt="groupofpeople">
+        <div class="col-md-10 col-md-offset-1" style="padding: 0 15px;">
+            <div id="main-block-wrapper">
+                <div class="col-md-12">
+                    {% block main %}
+    
+                    {% include 'Page Copy' | liquid %}
+    <!--
+                    {% if page.adx_entitylist %}
+                        {% include 'entity_list' key:page.adx_entitylist.id %}
+                    {% endif %}
+    
+                    {% if page.adx_entityform %}
+                        {% entityform id: page.adx_entityform.id %}
+                    {% endif %}
+    
+                    {% if page.adx_webform %}
+                        {% webform id: page.adx_webform.id %}
+                    {% endif %}
+    -->
+                    
+                {% endblock %}
+                <br>
+                <br>
+                <p class="page-caption">From its first investment in Makati Medical Center in 2007, Metro Pacific Hospital Holdings Inc. has since grown to be the largest private
+                hospital group in the Philippines
+                <br>
+                <br>
+                It has a portfolio of 18 hospitals in Luzon, Visayas, and Mindanao, with a combined authorized bed capacity of 3,600 beds.
+                Its hospitals include the premier tertiary hospital names in the industry, if not the leading and largest hospital in the city.
+                <br>
+                <br>
+                In addition, It is invested in allied health colleges, a growing network of primary care centers and cancer care centers, and a central
+                clinical laboratory.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <br>
+  <br>
+    <!-- END ABOUT US --> 
+  
+    
+    <!-- START OUR HOSPITALS --> 
+    <div class="container-fluid ourhospital-bg">
       <div class="ourHospitalsSection">
           <div class="page-heading ourhospitals-header">
               <h1>
@@ -68,78 +74,111 @@
           <div class="row" style="margin-bottom: 0px;  background-color:#f3f3f3;  " >
               <div class="col-md-10 col-md-offset-1" style="padding: 0 15px;">
                       <div class="col-md-3">
-                      <img class="fullwidth" src="../staelizabethLogo.jpg" alt="Santa Elizabeth Hospital">
+                        <a href="https://sehi.ph/"><img class="fullwidth" src="../staelizabethLogo.jpg" alt="Santa Elizabeth Hospital"></a>
                       </div>
                       <div class="col-md-3">
-                      <img class="fullwidth" src="../marikinavalleyLogo.jpg" alt="Marikina Valley Hospital">
+                        <a href="https://www.marikinavalleymedicalcenter.com/"><img class="fullwidth" src="../marikinavalleyLogo.jpg" alt="Marikina Valley Hospital"></a>
                       </div>
                       <div class="col-md-3">
-                      <img class="fullwidth" src="../delosantosLogo.jpg" alt="De Los Santos Medical Center">
+                        <a href="https://delossantosmed.ph/"><img class="fullwidth" src="../delosantosLogo.jpg" alt="De Los Santos Medical Center"></a>
                       </div>
                       <div class="col-md-3">
-                      <img class="fullwidth" src="../losBanosDoctorsLogo.jpg" alt="Los Banos Hospital">
+                        <a href="https://www.lbdhmconline.com/"><img class="fullwidth" src="../losBanosDoctorsLogo.jpg" alt="Los Banos Hospital"></a>
                       </div>
               </div>
           </div>
+          <br>
           <div class="row" style="margin-bottom: 0px;  background-color: #f3f3f3;  " >
           <div class="col-md-10 col-md-offset-1" style="padding: 0 15px;">
                   <div class="col-md-3">
-                      <img class="fullwidth" src="../pabloToreLogo.jpg" alt="Pablo Tore Hospital">
+                    <a href="#"><img class="fullwidth" src="../pabloToreLogo.jpg" alt="Pablo Tore Hospital"></a>
                   </div>
                   <div class="col-md-3">
-                      <img class="fullwidth" src="../ourladyLogo.jpg" alt="Our Lady of Lourdes Hospital">
+                    <a href="https://ollh-manila.com/"><img class="fullwidth" src="../ourladyLogo.jpg" alt="Our Lady of Lourdes Hospital"></a>
                   </div>
                   <div class="col-md-3">
-                      <img class="fullwidth" src="../manuelSantosLogo.jpg" alt="Manuel Santos Hospital">
+                    <a href="https://www.mjsantos.com.ph/"><img class="fullwidth" src="../manuelSantosLogo.jpg" alt="Manuel Santos Hospital"></a>
                   </div>
                   <div class="col-md-3">
-                      <img class="fullwidth" src="../cldhLogo.jpg" alt="CLDH Hospital">
+                    <a href="https://www.maniladoctors.com.ph/"><img class="fullwidth" src="../manilaDoctorsLogo.jpg" alt="Manila Doctors Hospital"></a>
                   </div>
           </div>
       </div>
+      <br>
       <div class="row" style="margin-bottom: 0px;  background-color: #f3f3f3;  " >
           <div class="col-md-10 col-md-offset-1" style="padding: 0 15px;">
                   <div class="col-md-3">
-                  <img class="fullwidth" src="../riversideLogo.jpg" alt="Riverside Hospital">
+                    <a href="https://www.rivermedcenter.net/"><img class="fullwidth" src="../westMetro.jpg" alt="West Metro Hospital"></a>
                   </div>
                   <div class="col-md-3">
-                  <img class="fullwidth" src="../makatiMedLogo.jpg" alt="Makati Med Hospital">
+                    <a href="https://www.makatimed.net.ph/"><img class="fullwidth" src="../makatiMedLogo.jpg" alt="Makati Med Hospital"></a>
                   </div>
                   <div class="col-md-3">
-                  <img class="fullwidth" src="../centralLuzonLogo.jpg" alt="Central Luzon Hospital">
+                    <a href="https://www.cldhei.edu.ph/"><img class="fullwidth" src="../centralLuzonLogo.jpg" alt="Central Luzon Hospital"></a>
                   </div>
                   <div class="col-md-3">
-                  <img class="fullwidth" src="../sacredHeartLogo.jpg" alt="Sacred Heart Hospital">
+                    <a href="https://sacredheartmalolos.com/"><img class="fullwidth" src="../sacredHeartLogo.jpg" alt="Sacred Heart Hospital"></a>
                   </div>
           </div>
       </div>
+      <br>
       <div class="row" style="margin-bottom: 0px;  background-color: #f3f3f3;  " >
       <div class="col-md-10 col-md-offset-1" style="padding: 0 15px;">
               <div class="col-md-4">
-                  <img class="fullwidth" src="../asianHospitalLogo.jpg" alt="Asian Hospital">
+                <a href="https://www.asianhospital.com/"><img class="fullwidth" src="../asianHospitalLogo.jpg" alt="Asian Hospital"></a>
               </div>
               <div class="col-md-4">
-                  <img class="fullwidth" src="../manilaDoctorsLogo.jpg" alt="Manila Doctors Hospital">
+                <a href="https://www.ddh.com.ph/"><img class="fullwidth" src="../cldhLogo.jpg" alt="Davao Doctors Hospital"></a>
               </div>
               <div class="col-md-4">
-                  <img class="fullwidth" src="../cardinalSantos.jpg" alt="Cardinal Santos Hospital">
+                <a href="https://cardinalsantos.com.ph/"><img class="fullwidth" src="../cardinalSantos.jpg" alt="Cardinal Santos Hospital"></a>
           </div>
       </div>
   </div>
+  <br>
   <div class="row" style="margin-bottom: 0px;  background-color:#f3f3f3; " >
       <div class="col-md-10 col-md-offset-1" style="padding: 0 15px;">
               <div class="col-md-4">
-              <img class="fullwidth" src="../drJesusLogo.jpg" alt="Dr Jesus Delgado Hospital">
+                <a href="https://delgadohospital.ph/"><img class="fullwidth" src="../drJesusLogo.jpg" alt="Dr Jesus Delgado Hospital"></a>
               </div>
               <div class="col-md-4">
-              <img class="fullwidth" src="../cmcLogo.jpg" alt="CMC Hospital">
+                <a href="https://cmc.ph/"><img class="fullwidth" src="../cmcLogo.jpg" alt="CMC Hospital"></a>
               </div>
               <div class="col-md-4">
-              <img class="fullwidth" src="../ramiroLogo.jpg" alt="Ramiro Community Hospital">
+                <a href="https://ramiromedical.ph/"><img class="fullwidth" src="../ramiroLogo.jpg" alt="Ramiro Community Hospital"></a>
           </div>
       </div>
   </div>
   <!-- END OUR HOSPITALS --> 
-</div>
-</div>
-</section>
+  </div>
+  </div>
+  {% if user | has_role:"Authenticated Users" %}
+  
+  {% entityform name: 'Profile - Corporate User' %}
+                  <script>
+                      //hide if Corporate User
+                      if ($('#mphhi_corporateuser_1').is(":checked") == true) //check if email confirmed is yes
+                      {
+                          $('a[class="weblink list-group-item"][href="/profile/profile-my-appointments/"][title="Appointments"][aria-label="Appointments"]').hide(); //hide appointments
+                          $('a[class="weblink list-group-item"][href="/profile/profile-my-medical-histories/"][title="Medical History"][aria-label="Medical History"]').hide(); //hide medical history
+                          $('a[class="weblink list-group-item"][href="/guarantors/"][title="Guarantors"][aria-label="Guarantors"]').hide(); //hide guarantors
+                          $('a[class="weblink list-group-item"][aria-label="Manage My Dependents"]').hide(); //hide dependents weblink
+                          $('a[href="/dependents/"][role="menuitem"][aria-label="Manage My Dependents"]').hide(); // hide dependents in header dropdown
+                          $('a[href="/my-appointments/dependents-appointments/"][role="menuitem"]').hide(); // hide dependents appointments in header dropdown
+                          $('a[title="Appointments"][class="dropdown-toggle"][role="menuitem"]').hide(); // hide appointments in header 
+                          $('a[href="/pharmacy-orders/"][role="menuitem"]').hide(); // hide appointments in header 
+  
+                          //hide in header dropdown
+                          $('a[href="/profile/profile-my-appointments/"][role="menuitem"]').hide();
+                          $('a[href="/profile/profile-my-medical-histories/"][role="menuitem"]').hide();
+                          $('a[href="/guarantors/"][role="menuitem"]').hide();
+                          $('a[href="/dependents-appointments/"][role="menuitem"]').hide();
+                      }
+                      else{
+                          $('a[href="/corporate-appointments/"][role="menuitem"]').hide(); // hide corporate appointments in header 
+                      }
+                      $('#EntityFormControl_41583b322cb4eb118236000d3a54b303').hide();
+                  </script>
+  {% else %}
+  
+  {% endif %}

@@ -1,0 +1,57 @@
+<style type="text/css">
+    p {
+        text-align: center;
+    }
+    /* sets the buttons to full width when screen is for mobile */
+    @media only screen and (max-width: 450px) {
+        .classicbutton {
+            width: 100% !important;;
+            margin-left: 0 !important; 
+            margin-right: 0 !important; 
+            margin-top: 5px;
+        }   
+        p {
+            text-align: center;
+        }
+        footer .footer-bottom p {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }   
+</style><h2 id="page-header-text" style="text-align: center; color: #000;">Email Confirmed!</h2>
+
+<div id="pageDesc" style="margin-bottom: 30px; margin-top: 30px;color: #000; ">
+    <!-- <p>Your email has been confirmed.</p> -->
+    <p>For questions, please contact us at support@mphhi.com or (02) 123-456-78</p>
+    <br>
+
+
+
+    
+    <div class="pull-right" id="buttons_Submission">
+        <input class="btn btn-primary form-action-container-left important classicbutton" id="gotosignin" style="text-transform: uppercase; width: 300px;" type="button" value="Proceed To Sign-in"> 
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+    $('#gotosignin').addClass("important classicbutton"); 
+    /*Go to home Button function */
+    $("#gotosignin").click(function(){
+        window.location.href = "https://mphhi-dev-us.powerappsportals.com/SignIn?returnUrl=%2F";
+    });
+    /* remove class on mobile */ 
+    $(window).resize(function(){
+    if ($(window).width() <= 450) {  
+       $('#buttons_Submission').removeClass("pull-right");
+    }     
+    else {
+        /*move buttons to the right*/
+        $('#buttons_Submission').addClass("pull-right"); 
+    }
+    
+    }); 
+}); 
+</script>
+

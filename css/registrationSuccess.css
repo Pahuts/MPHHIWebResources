@@ -1,0 +1,231 @@
+/* Box logo */
+.box-logo {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+}
+/* Center Box */
+.box-cent {
+  background: white;
+  color: black;
+  /* border-radius: 1em; */
+  width: 600px;
+  height: 300px;
+  padding: 1em;
+  padding-top: 65px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+/* bottom center box */
+.box-cent-bot {
+  /* background: #E5E5E5; */
+  color: black;
+  /* border-radius: 1em; */
+  width: 280px;
+  height: 75px;
+  padding: 1em;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.bot-content {
+  font-size: 12px;
+  color:#999999
+}
+
+.consultation-date {
+  font-size: 22px;
+  color: black;
+}
+
+.qr-code-state {
+    font-size: 26px;
+    font-weight: bold;
+    font-family: 'Cocogoose';
+}
+
+.qr-content {
+  font-style: 'Open Sans';
+  font-weight: bold;
+}
+.qr-subcontent {
+  font-style: 'Open Sans'
+}
+
+h1 {
+  font-family: 'Cocogoose';
+}
+.validity_date {
+  border: none;
+  font-size: 16px;
+  color: darkblue;
+  font-weight: bold;
+}
+
+footer .footer-bottom {
+  position: fixed;
+  bottom: 0;
+}
+
+ @media (min-width: 1800px) {
+    .box-logo {
+        top: 34%;
+    }
+    .box-cent-bot {
+        top: 61%;
+    }
+} 
+
+
+
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+@media (min-width: 1200px) and (max-width: 1535px) {
+      .box-logo {
+        top: 33%;
+    }
+    .box-cent-bot {
+        top: 62%;
+    }
+}
+/*@media (min-width: 1200px) and (max-width: 1350px) {*/
+
+/*    .box-logo {*/
+/*        top: 36%;*/
+/*    }*/
+/*    .box-cent-bot {*/
+/*        top: 62%;*/
+/*    }*/
+  
+/*}*/
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+    .box-logo {
+        top: 34%;
+    }
+    .box-cent-bot {
+        top: 64%;
+    }
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+    .box-logo {
+        top: 34%;
+    }
+    .box-cent-bot {
+        top: 64%;
+    }
+  
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  
+    .box-logo {
+        top: 34%;
+    }
+    .box-cent-bot {
+        top: 64%;
+    }
+  
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (max-width: 480px) {
+  .box-cent{
+    width: 300px;
+    height: 400px;
+  }
+  
+    .box-logo {
+        top: 21%;
+    }
+    .box-cent-bot {
+        top: 65%;
+    }
+  
+}
+
+@media (min-height: 800px) and (min-width: 400) {
+    .box-logo {
+        top: 32%;
+    }
+    .box-cent-bot {
+        top: 67%;
+    }
+}
+@media (min-width: 768px) and (min-height: 1024px) {
+    .box-logo {
+        top: 36%;
+    }
+}
+
+@media (min-width: 1024px) and (min-height: 1366px) {
+    .box-logo {
+        top: 40%;
+    }
+    .box-cent-bot {
+        top: 61%;
+    }
+}
+@media (max-height: 568px) and (min-width: 320px) {
+    .box-logo {
+        top: 27%;
+    }
+    .box-cent-bot {
+        top: 69%;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 481px) {
+    .box-logo {
+        top: 23%;
+    }
+    .box-cent-bot {
+        top: 67%;
+    }
+}
+
+/* 
+@media (min-height: 653px) and (min-width: 280px) {
+    .box-logo {
+        top: 27%;
+    }
+    .box-cent-bot {
+        top: 67%;

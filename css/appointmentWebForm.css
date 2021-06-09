@@ -1,0 +1,59 @@
+.crmEntityFormView .cell.crmquickform-cell:first-child {
+  border-right: 0px;
+}
+/* Active class for navbar */
+.active-nav {
+  color:white !important;
+  background-color: #5BBA47;
+}
+
+.adjust-margin {
+  position: relative;
+  left: 38%;
+}
+
+footer .footer-bottom {
+  position: fixed;
+  bottom: 0;
+}
+
+.custom-label {
+  font-size: 18px;
+  font-family: 'Open Sans';
+}
+
+/*paragraph*/
+.sub-content {
+  position: relative;
+  left: -24%;
+}
+
+
+.crmEntityFormView .cell .picklist label {
+    /* float: none; */
+    font-weight: bold;
+    border: 1px solid white;
+    padding: 2;
+    position: relative;
+    padding: 20px;
+    border-radius: 8px;
+    background: #b3cde0;
+}
+
+
+.crmEntityFormView .cell .picklist input[type=radio]
+{
+margin: 26px 5px 5px 0;
+}
+
+.crmEntityFormView .cell div.control {
+    clear: both;
+    position: relative;
+    left: -15px;
+}
+
+/* description*/
+.custom-description {
+  position: relative;
+  left: -21%;
+}
