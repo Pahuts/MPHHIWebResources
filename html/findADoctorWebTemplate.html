@@ -51,10 +51,10 @@
     
     //check if appointment type is yes
     //$('td[aria-label="E-Consultation Yes"]').prepend('<div style="color: #5BBA47;"><h5>Consultation</h5></div>');
-    $('td[aria-label="E-Consultation Yes"]').html("E-Consultation"); // E-consultation
+    $('td[aria-label="E-Consultation Yes"]').html("<i class='fa fa-check-circle-o'style='color: #5BBA47;'></i> E-Consultation"); // E-consultation
     $('td[aria-label="E-Consultation No"]').html(""); // E-consultation
     
-    $('td[aria-label="Face to Face Yes"]').html("Face to Face"); // Face to face
+    $('td[aria-label="Face to Face Yes"]').html("<i class='fa fa-check-circle-o' style='color: #5BBA47;'></i> Face to Face"); // Face to face
     $('td[aria-label="Face to Face No"]').html(""); // Face to face
 
     //add header 
@@ -86,59 +86,48 @@
 
     
     //$("tr[data-entity='mphhi_associatedhospital']").append("<td class='book-doctor-container'><a class='btn btn-primary button' href=''>View</a></td>");
-    $(".book-doctor-container").on('click', function () {
-      var row = $(this).closest('tr');
-      var trID = row.attr('data-id');
-      var trName = row.attr('data-name');
-      var href = "https://mphhi-dev-us.powerappsportals.com/find-a-doctor/find-a-doctor-view/?id={{trID}}";
+    // $(".book-doctor-container").on('click', function () {
+    //   var row = $(this).closest('tr');
+    //   var trID = row.attr('data-id');
+    //   var trName = row.attr('data-name');
+    //   var href = "https://mphhi-dev-us.powerappsportals.com/find-a-doctor/find-a-doctor-view/?id={{trID}}";
 
-      $('.book-doctor-container').attr("href", href);
-    });
-    // get cardiologist data name, guid, entityname 
-		var column = row.find("td[data-attribute='mphhi_hospital']");
-		var specializationData = column.attr("data-value");
-    var splitSpecialization = specializationData.split(/[^A-Za-z0-9,-\s]/);
-    var specializationName = splitSpecialization[16];
-    var specializationGUID = splitSpecialization[5];
-    var specializationEntityName = "mphhi_department";
-
-    console.log(`${specializationName} ${specializationGUID} ${specializationEntityName}`);
-
-
-		// get hospital data name, guid, entityname
-		var column = row.find("td[data-attribute='mphhi_hospital']");
-		var hospitalData = column.attr("data-value");
-    var splitHospital = hospitalData.split(/[^A-Za-z0-9,-\s]/);
-    var hospitalName = splitHospital[16];
-    var hospitalGUID = splitHospital[5];
-    var hospitalEntityName = "msemr_location";
-
-    console.log(`${hospitalName} ${hospitalGUID} ${hospitalEntityName}`);
-		
-		// get Associated Hospital name, guid, entityname
-		var row = $(this).closest("td[data-attribute='mphhi_hospital']");
-		var aHospitalName = row.attr('data-name');
-    var aHospitalGUID = row.attr('data-id');
-    var aHospitalEntityName = "mphhi_associatedhospital";
-
- 
-		// $(".book-doctor-container").on('click', function () {
-		// 	var row = $(this).closest("tr");
-		// 	var column = row.find("td[data-attribute='mphhi_hospital']");
-		// 	var specializationData2 = column.attr("data-value");
-    //   console.log(specializationData2);
+    //   $('.book-doctor-container').attr("href", href);
     // });
-
     
     //$("<td class='book-doctor-container' style='width: 50% !important; float: right; margin-top: -40px !important;padding-bottom: 0px !important; margin-bottom: 0px !important;'></td>").insertAfter('td[data-th="Doctor"]'); //add button
     //$("<td style='width: 50% !important; float: right; margin-top: -40px !important;padding-bottom: 0px !important; margin-bottom: 0px !important;'></td>").insertAfter('td[data-th="Doctor"]'); //add button
     //$('a[class="details-link"][title="View details"]').prependTo(".button");
     //$('a[class="details-link"][title="View details"]').prependTo(".button");
     //$('td:nth-child(5)').prependTo("td:nth-child(2)");
+
+    // buttons functionality
     $(this).children(".view-grid").find("ul").each(function (){
+      // get id and name of Associated Hospital
         var row = $(this).closest('tr');
         var trID = row.attr('data-id');
         var trName = row.attr('data-name');
+        var aHospitalEntityName = "mphhi_associatedhospital";
+        // get cardiologist data name, guid, entityname 
+        var dColumn = row.find("td[data-attribute='mphhi_department']");
+        var specializationData = dColumn.attr("data-value");
+        var splitSpecialization = specializationData.split(/[^A-Za-z0-9,-\s]/);
+        var specializationName = splitSpecialization[16];
+        var specializationGUID = splitSpecialization[5];
+        var specializationEntityName = "mphhi_department";
+
+        console.log(`${specializationName} ${specializationGUID} ${specializationEntityName}`);
+
+        // get hospital data name, guid, entityname
+        var hColumn = row.find("td[data-attribute='mphhi_hospital']");
+        var hospitalData = hColumn.attr("data-value");
+        var splitHospital = hospitalData.split(/[^A-Za-z0-9,-\s]/);
+        var hospitalName = splitHospital[16];
+        var hospitalGUID = splitHospital[5];
+        var hospitalEntityName = "msemr_location";
+
+        console.log(`${hospitalName} ${hospitalGUID} ${hospitalEntityName}`);
+        
         //var href = "https://mphhi-dev-us.powerappsportals.com/find-a-doctor/find-a-doctor-view/?id={{trID}}";
         
         //$('.book-doctor-container').attr("href", href);
@@ -146,8 +135,10 @@
         //$("tr[data-id='"+trID+"']").append("<td class='book-doctor-container'><a class='btn btn-primary button' href='https://mphhi-dev-us.powerappsportals.com/find-a-doctor/find-a-doctor-view/?id="+trID+"'>View</a></td>");
         
         $("<td id='tdbutton"+trID+"' class='book-doctor-container' style='position: relative; height: 40px; width: 14%; padding: 10px !important; width: 20% !important; margin-left: 29%;'></td>").insertAfter('td[id="'+trID+'"]'); //add button
-$("td[id='tdbutton"+trID+"']").append("<a class='btn btn-primary button' href='https://mphhi-dev-us.powerappsportals.com/new-appointment-web-form/?hid="+hospitalGUID+"&hname="+hospitalName+"&hename="+hospitalEntityName+"&sid="+specializationGUID+"&sname="+specializationName+"&sename="+specializationEntityName+"&aid="+trID+"&aname="+trName+"&aename"+aHospitalEntityName+"'>Book</a>");
-        
+        $("td[id='tdbutton"+trID+"']").append("<a class='btn btn-primary button' href='https://mphhi-dev-us.powerappsportals.com/find-a-doctor/find-a-doctor-view/?id="+trID+"'>View</a>");
+        // Book appointment button
+        //$("<td id='tdbutton"+trID+"' class='book-doctor-container' style='position: relative; height: 40px; width: 14%; padding: 10px !important; width: 20% !important; margin-left: 29%;'></td>").insertAfter('td[id="'+trID+'"]'); //add button
+				$("td[id='tdbutton"+trID+"']").append("<a class='btn btn-primary button' href='https://mphhi-dev-us.powerappsportals.com/new-appointment-web-form/?hid="+hospitalGUID+"&hname="+hospitalName+"&hename="+hospitalEntityName+"&aid="+trID+"&aname="+trName+"&aename"+aHospitalEntityName+"'>Book</a>");
         //$("<a class='btn btn-primary button' href='https://mphhi-dev-us.powerappsportals.com/find-a-doctor/find-a-doctor-view/?id="+trID+"'>View</a>").insertAfter('td[data-th="Doctor"]');
         // do something with each row
         //$('td:nth-child(5)').css("position","");
