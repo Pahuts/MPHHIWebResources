@@ -6,7 +6,7 @@ function generateMedicalCertificate(formContext) {
     if(!patientInstruction || !medicalCertificateRemarks || !remarksForPatient) {
         formContext.ui.setFormNotification("Please add information on the following fields: Medical Certificate Remarks, Recommendation to patient, and Remarks for Patient",  "INFO", "1");
     } else {
-      formContext.ui.setFormNotification("Medical Certificate is now being generated. Files with the same file name will be overwritten.",  "INFO", "2");
+      formContext.ui.setFormNotification("Medical Certificate is now being generated.",  "INFO", "2");
       var aptID = Xrm.Page.data.entity.getId(); // get appointment guid
       var fileName = "Medical Certificate.pdf" ;
       var noteSubject = "Medical Certificate Document Uploaded to sharepoint";
@@ -17,7 +17,7 @@ function generateMedicalCertificate(formContext) {
       parameters.NoteSubject = noteSubject;
       parameters.FileName = fileName;
       parameters.AptTypeCode = 10272;
-      parameters.AptTemplateId = "c8925292-7fbf-eb11-8236-000d3a1b6443";
+      parameters.AptTemplateId = "75c3a477-57d4-eb11-bacc-0022481ff135"; //c8925292-7fbf-eb11-8236-000d3a1b6443
       parameters.AptRecordId = aptID;
     
       var mphhi_CustomActionGenerateMedicalCertificateRequest = {

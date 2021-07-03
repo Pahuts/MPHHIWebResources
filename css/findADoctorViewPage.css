@@ -1,0 +1,196 @@
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+footer .footer-bottom {
+  bottom: 0;
+  position: fixed;
+}
+
+.btn-primary {
+  width: 50%;
+  background-color: #0f4b90 !important;
+}
+.btn-primary:hover:not([disabled]) {
+  background-color: #000080 !important;
+}
+
+/* Active class for navbar */
+.active-nav {
+color:white !important;
+background-color: #5BBA47;
+}
+/* adjust col-md-6 width */
+.col-md-6 {
+width: 47%;
+}
+
+/* Style for associated hospital and specialization */
+.affiliatedHospital {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding-bottom: 10px;
+  box-shadow: 0 3px 5px 0 #ccc;
+  margin-right: 58px;
+}
+
+.affiliatedHMO {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding-bottom: 10px;
+  box-shadow: 0 3px 5px 0 #ccc;
+}
+
+
+.specialization {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding-bottom: 10px;
+  box-shadow: 0 3px 5px 0 #ccc;
+  margin-left:1%;
+}
+
+.assocHosp {
+font-size: 16px;
+color: black;
+font-family: 'Open Sans', sans-serif;
+}
+
+.special {
+font-size: 16px;
+color: black;
+font-family: 'Open Sans', sans-serif;
+}
+
+/*doctor name custome CSS */
+input#mphhi_doctor_name {
+  color: #0f4b90 !important;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/*hide doctor label*/
+label#mphhi_doctor_label {
+  display: none;
+}
+
+/*border bottom*/
+.custom-border-bottom{
+  border-bottom: 1px solid #eee;
+}
+.btn-primary {
+border-color: white !important;
+font-family: 'Open Sans', sans-serif;
+font-weight: 600;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  footer .footer-bottom {
+    position:relative;
+  }
+  .specialization {
+    margin-left:0;
+  }
+  .col-md-6 {
+    width: 88%;
+    margin-top: 1%;
+    margin-left: 6%;
+    margin-bottom: 3%;
+  }
+  .col-md-12 {
+    margin-bottom: 3%;
+  }
+  h3 {
+    font-size: 20px;
+  }
+.affiliatedHMO {
+  margin-left: 6%;
+  width: 88%;
+}
+  .hmos {
+    font-size: 14px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  footer .footer-bottom {
+    position:relative;
+  }
+  .specialization {
+    margin-left:0;
+  }
+  .col-md-6 {
+    width: 90%;
+    margin-top: 1%;
+    margin-left: 4%;
+    margin-bottom: 2%;
+  }
+  .col-md-12 {
+    margin-bottom: 3%;
+  }
+  .affiliatedHMO {
+    margin-left: 4%;
+    width: 90%;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  footer .footer-bottom {
+    position:relative;
+  }
+
+  .specialization {
+    margin-left:0;
+  }
+  .col-md-6 {
+    width: 90%;
+    margin-top: 1%;
+    margin-left: 4%;
+    margin-bottom: 2%;
+  }
+  .col-md-12 {
+    margin-bottom: 3%;
+  }
+  .affiliatedHMO {
+    width: 90%;
+    margin-left: 4%;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  footer .footer-bottom {
+    bottom: 0;
+    position: fixed;
+  }
+  .specialization {
+    margin-left:0;
+  }
+  .col-md-6 {
+    width: 100%;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    margin-left: 0;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  footer .footer-bottom {
+    bottom: 0;
+    position: fixed;
+  }
+  .specialization {
+    margin-left:1%;
+  }
+  /* adjust col-md-6 width */
+  .col-md-6 {
+    width: 47%;
+  }
+  .affiliatedHMO {
+    width: 100%;
+    margin-left: 0;
+  }
+}

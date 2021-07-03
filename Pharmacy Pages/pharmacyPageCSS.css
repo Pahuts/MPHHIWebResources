@@ -1,0 +1,308 @@
+footer .footer-bottom {
+  position: fixed;
+  bottom:0;
+}
+
+/*.crmEntityFormView .actions {*/
+/*  position: relative;*/
+/*  top: -29vh;*/
+/*}*/
+/* Active class for navbar */
+.active-nav {
+  color:white !important;
+  background-color: #5BBA47;
+}
+/* span number style */
+div.progress-numeric span.number {
+    background: #0f4b90;
+}
+
+.div.progress-numeric span.number, div.progress-numeric span.number.total {
+    background-color: grey;
+}
+
+
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+    z-index: 1;
+    height: 35px;
+}
+
+.control .input-group .form-control.lookup {
+    z-index: 1;
+}
+
+/* fieldset */
+fieldset[aria-label='Payment Option'] {
+  position: relative;
+  top: -300px;
+}
+
+/*attach-files-subgrid*/
+.attach-files-subgrid {
+  font-family: "Open Sans";
+  font-size: 14px;
+  font-weight: normal;
+}
+/*medication-subgrid*/
+.medication-subgrid {
+  font-family: "Open Sans";
+  font-size: 14px;
+  font-weight: normal;
+}
+/* hide add folder in sharepoint */
+.add-folder.btn.btn-info.action {
+ display:none; 
+}
+
+/*.crmEntityFormView .tab-title {*/
+/*    position: relative;*/
+/*    top: -65px;*/
+/*    left: 32px;*/
+/*}*/
+
+.crmEntityFormView .tab-title {
+    border-bottom: 0px solid #eee;
+}
+
+
+.section-title {
+  font-family: 'Cocogoose';
+  font-weight: bold;
+}
+/*adjust margin bottom of first tab*/
+
+/*.crmEntityFormView .tab .tab-column:first-child {*/
+/*  margin-bottom: -195px;*/
+/*}*/
+/* label of radio buttons */
+
+.crmEntityFormView .cell .picklist label {
+  font-weight: bold;
+  font-family: 'Open Sans';
+}
+
+/*add style to radio buttons div*/
+/* Payment Option */
+.online {
+  border-radius: 8px;
+  padding: 28px 20px 20px 20px;
+  width: 68%;
+  background: #b3cde0;  
+}
+.overthecounter {
+    border-radius: 8px;
+    padding: 28px 20px 20px 20px;
+    position: relative;
+    width: 69%;
+    background: #b3cde0;
+    top: -95px;
+    left: 568px;
+}
+
+
+/* Payment Method */
+.creditdebit {
+  border-radius: 8px;
+  padding: 28px 20px 20px 20px;
+  width: 45%;
+  background: #b3cde0;  
+}
+
+.paymaya {
+    border-radius: 8px;
+    padding: 28px 20px 20px 20px;
+    width: 45%;
+    position: relative;
+    left: 377px;
+    top: -115px;
+    background: #b3cde0;
+}
+
+.otc {
+    background: #b3cde0;
+    border-radius: 8px;
+    padding: 28px 20px 20px 20px;
+    width: 46%;
+    position: relative;
+    left: 756px;
+    top: -230px;
+}
+
+/* Order Receipient*/
+.myself {
+  border-radius: 8px;
+  padding: 28px 20px 20px 20px;
+  width: 68%;
+  background: #b3cde0;
+}
+
+.dependent {
+    border-radius: 8px;
+    padding: 28px 20px 20px 20px;
+    width: 68%;
+    position: relative;
+    left: 380px;
+    top: -115px;
+    background: #b3cde0;
+}
+
+.other {
+    background: #b3cde0;
+    border-radius: 8px;
+    padding: 28px 20px 20px 20px;
+    width: 68%;
+    position: relative;
+    left: 762px;
+    top: -230px
+}
+/* Order Type */
+.delivery {
+    background: #b3cde0;
+    border-radius: 8px;
+    padding: 28px 20px 20px 20px;
+    width: 68%;
+    position: relative;
+    /*left: 762px;*/
+    /*top: -230px*/
+}
+
+.pickup {
+    background: #b3cde0;
+    border-radius: 8px;
+    padding: 28px 20px 20px 20px;
+    width: 68%;
+    position: relative;
+    left: 570px;
+    top: -114px;
+}
+
+/* hover style */
+
+.blue-cell {
+    background: #add8e6;
+}
+
+label[for="mphhi_createorderfor_0"] {
+  font-weight: bold;
+  position: relative;
+  left: 52px;
+  top: -53px;
+}
+
+label[for="mphhi_createorderfor_1"] {
+  font-weight: bold;
+  left: 428px;
+  top: -169px;
+  position: relative;
+}
+
+label[for="mphhi_createorderfor_2"] {
+  font-weight: bold;
+  position: relative;
+  left: 807px;
+  top: -283px;
+}
+
+label[for="mphhi_ordertype_0"] {
+    font-weight: bold;
+    position: relative;
+    left: 46px;
+    top: -55px;
+}
+
+label[for="mphhi_ordertype_1"] {
+    font-weight: bold;
+    position: relative;
+    left: 618px;
+    top: -168px;
+}
+
+/* adjust label for style (Payment Method) */
+label[for="mphhi_paymentmethod_0"] {
+    font-weight: bold;
+    position: relative;
+    top: -54px;
+    left: 45px;
+}
+
+label[for="mphhi_paymentmethod_1"] {
+    font-weight: bold;
+    top: -170px;
+    left: 422px;
+    position: relative;
+}
+
+label[for="mphhi_paymentmethod_2"] {
+    font-weight: bold;
+    position: relative;
+    top: -284px;
+    left: 797px;
+}
+/* adjust label for style (Payment Option) */
+label[for="mphhi_paymentoption_0"] {
+    font-weight: bold;
+    position: relative;
+    top: -44px;
+    left: 59px;
+}
+label[for="mphhi_paymentoption_1"] {
+    font-weight: bold;
+    position:relative;
+    top: -139px;
+    left: 621px;
+}
+/* style descriptions */
+.radio-description {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  color: grey;
+  font-size: 14px;
+}
+
+/* Order type field set*/
+.order-type-fieldset {
+  position: relative;
+  top: -268px;
+  margin-bottom: -370px !important;
+}
+
+/* adjust field label */
+.crmEntityFormView .cell .field-label {
+  font-family: 'Cocogoose';
+  font-weight: bold;
+}
+
+/* adjust quickview style */
+#mphhi_street1.text.form-control {
+  border: 1px solid #5BBA47;
+  border-radius: 8px;
+  position: relative;
+  padding-left: 5px;
+}
+/* adjust section-title style */
+.crmEntityFormView .section-title {
+  font-size: 16px;
+}
+/* description below */
+.crmEntityFormView div.description.below {
+  font-family: "Open Sans";
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.crmEntityFormView .cell input[type=text], .crmEntityFormView .cell select, .crmEntityFormView .cell textarea {
+    border-color: #5BBA47;
+    border: 1px solid #5BBA47;
+    padding-left: 10px;
+}
+
+.crmEntityFormView .form-control.readonly, .crmEntityFormView .form-control[readonly][disabled], .form-readonly .form-control {
+    border: 1px solid #5BBA47;
+    padding-left: 10px;
+}
+
+.text-muted {
+    color: #666;
+    padding-left: 10px;
+}

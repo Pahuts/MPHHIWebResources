@@ -1,0 +1,206 @@
+<style type="text/css">
+  p {
+      margin: 0;
+  }
+/* */
+body {
+background-image: url('../validator_bg.jpg');
+background-size: cover;
+}
+
+/* button */
+.backtohome {
+color: #f5f5f5;
+background-color: #5BBA47!important;
+border-color: #5BBA47!important;
+outline: none;
+padding: 10px 35px;
+width: 511px;
+height: 70px;
+font-weight: bold;
+font-family: 'Cocogoose';
+}
+
+.backtohome:hover {
+text-decoration: none;
+color: white !important;
+background-color: #3f8331 !important;
+border-color: #3f8331 !important;
+}
+
+/* Box logo */
+.box-logo {
+position: absolute;
+top: 30%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%);
+text-align: center;
+z-index: 1;
+}
+/* Center Box */
+.box-cent {
+background: white;
+color: black;
+/* border-radius: 1em; */
+width: 600px;
+height: 300px;
+padding: 1em;
+padding-top: 65px;
+position: absolute;
+top: 50%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%);
+text-align: center;
+}
+/* bottom center box */
+.box-cent-bot {
+/* background: #E5E5E5; */
+color: black;
+/* border-radius: 1em; */
+width: 280px;
+height: 75px;
+padding: 1em;
+position: absolute;
+top: 65%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%);
+text-align: center;
+}
+
+.bot-content {
+font-size: 12px;
+color:#999999
+}
+
+.consultation-date {
+font-size: 22px;
+color: black;
+}
+
+.qr-code-state {
+  font-size: 26px;
+  font-weight: bold;
+  font-family: 'Cocogoose';
+}
+
+.qr-content {
+font-style: 'Open Sans';
+font-weight: bold;
+}
+.qr-subcontent {
+font-style: 'Open Sans'
+}
+
+h1 {
+font-family: 'Cocogoose';
+}
+.validity_date {
+border: none;
+font-size: 16px;
+color: darkblue;
+font-weight: bold;
+}
+
+footer .footer-bottom {
+position: fixed;
+bottom: 0;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+.box-logo {
+  top: 30%;
+}
+.box-cent-bot {
+  top: 64%;
+}
+.box-cent {
+  width: 77%;
+  height: 41%;
+}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+.box-logo {
+  position: absolute;
+  top: 35%;
+}
+.box-cent-bot {
+  top: 61%;
+}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+.box-logo {
+  position: absolute;
+  top: 35%;
+}
+.box-cent-bot {
+  top: 61%;
+}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+.box-logo {
+  position: absolute;
+  top: 35%;
+}
+.box-cent-bot {
+  top: 61%;
+}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+.box-logo {
+  position: absolute;
+  top: 35%; 
+}
+.box-cent-bot {
+  top: 61%;
+}
+}
+
+
+</style><div class="container">
+<!-- Box Logo -->
+<div class="box-logo">
+</div>
+<!-- top box -->
+<div class="box-cent"> 
+<div class="qr-code-state">
+</div>
+<br>
+<div class="qr-content">
+</div>
+<div class="qr-subcontent">
+  Please check your account and try again.
+  <br>
+</div>
+</div>
+<br>
+<br>
+<br>
+<!-- bottom box -->
+<div class="box-cent-bot"> 
+<div class="bot-button">
+    <a href="/" id="backtohome" class="backtohome">Back to Home</a>
+    <!-- <input class="classicbutton" id="Backtohome" onclick="goToHome()" type="button" value="Back to Home"> -->
+  </div>
+</div>
+</div>
+
+<br>
+<script>
+  /*Go to home Button function */
+  function goToHome() {
+      window.location.href = "/";
+  }
+</script>
+

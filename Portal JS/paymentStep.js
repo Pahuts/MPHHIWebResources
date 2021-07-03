@@ -1,34 +1,4 @@
-$(document).ready(function () {
-    // INITIALIZE FORM
-    $("td.lookup div.input-group").width("100%");   // Expand all lookup fields
-  
-    $("[data-name='hidden2']").closest("fieldset").hide();  // Hide dev section
-  
-    // Reposition From Previous appointment radio button
-    $("label[for='mphhi_frompreviousappointment_1']").insertBefore($("#mphhi_frompreviousappointment_0"));
-    $("#mphhi_frompreviousappointment_1").insertBefore("label[for='mphhi_frompreviousappointment_1']");
-  
-    // Adjust Quick View form colspan
-    $("#PreviousAppointmentQV").closest("td").attr("colspan","2");
-  
-    $("a.add-folder.btn.btn-info.action").hide(); // Hide SharePoint "New Folder" button
-  
-    $("#mphhi_previousappointment").closest("td").hide(); // Hide previous appointment field
-  
-    // Show or hide Previous Appointment field based on "Do you have previous prescription/s or attachment/s from previous appointment?" field
-    $("#mphhi_frompreviousappointment").change(
-        function() {
-            if($("#mphhi_frompreviousappointment_0").prop("checked")) {
-                $("#mphhi_previousappointment").parent().parent().parent().hide(); // Hide previous appointment field
-            } else if($("#mphhi_frompreviousappointment_1").prop("checked")) {
-                $("#mphhi_previousappointment").parent().parent().parent().show(); // Show previous appointment field
-                $("#mphhi_previousappointment").closest(".control").prev(".info").addClass("required");
-            }
-        }
-    );
-    
-    // Adjust lookup colspan
-    $("#mphhi_previousappointment").closest("td").attr("colspan","2");
+$(document).ready(function() {  
     // Mark lookups as required
     $("#mphhi_paymentmethod").closest(".control").prev(".info").addClass("required");
     $("#mphhi_paymentoption").closest(".control").prev(".info").addClass("required");
@@ -39,9 +9,11 @@ $(document).ready(function () {
   
     $("label[for='mphhi_withloa_1']").insertBefore($("#mphhi_withloa_0"));
     $("#mphhi_withloa_1").insertBefore("label[for='mphhi_withloa_1']");
-    
+
+    $("[data-name='hidden3']").closest("fieldset").hide();
   
-    // BIND CHANGE FUNCTIONS
+    $("a.add-folder.btn.btn-info.action").hide(); // Hide SharePoint "New Folder" button
+    
     
     // Change fields based on Appointment Type
     var defaultTNCLabel = $("#mphhi_agreetotelemedconditions_label").html();    // Get default label for terms and conditions checkbox
@@ -50,50 +22,30 @@ $(document).ready(function () {
     // Clear agreement checkbox
     $("#mphhi_agreetotelemedconditions").prop("checked", false);
     $("#mphhi_agreetotelemedconditions").change();
-    
+
     switch (appointmentType) {
         case "205220000":       // E-Consultation
-            // Show payment
-            $(".section[data-name='payment']").closest("fieldset").show();
             // Show agreement checkbox
             $("#mphhi_agreetotelemedconditions").closest("td").show();
-            $("#mphhi_agreetotelemedconditions_label").html("I agree with the provisions on the <a href='/privacy-policy/' target='_blank'>Consent to Telemedicine Conditions</a>.");
+            $("#mphhi_agreetotelemedconditions_label").html("I agree with the provisions on the <a href='/consent-to-telemedicine' target='_blank'>Consent to Telemedicine Conditions</a>.");
             break;
         case "205220001":       // Face-to-Face Consultation
-            // Hide payment
-            $(".section[data-name='payment']").closest("fieldset").hide();
-            // Clear payment
-            $("#mphhi_paymentoption").val("");
-            $("#mphhi_paymentmethod").val("");
-            $("#mphhi_withloa_1").prop("checked", false);
             // Show agreement checkbox
             $("#mphhi_agreetotelemedconditions").closest("td").show();
             $("#mphhi_agreetotelemedconditions_label").html("I agree with the conditions on the <a href='/privacy-notice' target='_blank'>Telemed Data Privacy Notice</a>.");
             break;
         case "205220002":       // Outpatient Service
-            // Hide payment
-            $(".section[data-name='payment']").closest("fieldset").show();
-            // Clear payment
-            $("#mphhi_paymentoption").val("");
-            $("#mphhi_paymentmethod").val("");
-            $("#mphhi_withloa_1").prop("checked", false);
             // Show agreement checkbox
             $("#mphhi_agreetotelemedconditions").closest("td").show();
             $("#mphhi_agreetotelemedconditions_label").html("I agree with the provisions on the <a href='/consent-for-procedure' target='_blank'>Consent for Procedure</a>.");
             break;
         default:
-            // Hide payment
-            $(".section[data-name='payment']").closest("fieldset").hide();
-            // Clear payment
-            $("#mphhi_paymentoption").val("");
-            $("#mphhi_paymentmethod").val("");
-            $("#mphhi_withloa_1").prop("checked", false);
             // Hide agreement checkbox
             $("#mphhi_agreetotelemedconditions").closest("td").hide();
             $("#mphhi_agreetotelemedconditions_label").html(defaultTNCLabel);
             break;
     }
-  
+
   
     // BIND CHANGE FUNCTIONS
   
@@ -132,8 +84,7 @@ $(document).ready(function () {
         }
     );
     $("#mphhi_agreetotelemedconditions").change();
-  
-  
+
     // DEFINE VALIDATORS
     
     // Payment Option validator
@@ -206,58 +157,49 @@ $(document).ready(function () {
     // Add the new validator to the page validators array:
     Page_Validators.push(LOAValidator);
     // Wire-up the click event handler of the validation summary link
-    $("a[href='#Files']").on("click", function () { scrollToAndFocus('Files','Files'); });
-  
-  
-    // Odata for Outpatient Service
-      //===========================================================================================================================================================================
-    // OData query for prepayment - Outpatient Services Entity
-    var prePayment = [];
-    var outPatientServicesURL = "~/_odata/OutpatientService";
-    $.ajax({
-        type: "GET",
-        contentType: "application/json; charset=utf-8",
-        datatype: "json",
-        url: outPatientServicesURL,
-        beforeSend: function(XMLHttpRequest) {
-            XMLHttpRequest.setRequestHeader("Accept", "application/json");
-        },
-        async: false,
-        success: function(data, textStatus, xhr) {
-          prePayment = prePayment.concat(data.value);
-          outPatientServicesURL = data["odata.nextLink"];
-        }
-    });
-  
-  // Populated Timeslot Date lookup based on Preferred Date
-  // GET ODATA RESULT BEFORE EXECUTING
-  var outPatientService = $("#mphhi_outpatientserviceunderdcunderh").val();
-  if(outPatientService) {
-    // $("#mphhi_outpatientservice").change( 
-    //   function() {
-          var selectedOutPatientService = {};
-          selectedOutPatientService = prePayment.find(
-              function(prePaymentObject) {
-                return ($("#mphhi_outpatientserviceunderdcunderh").val() == prePaymentObject.mphhi_outpatientservicesid);
-              }
-          );
-          if (selectedOutPatientService) {
-              console.log("Prepayment Value: " + selectedOutPatientService.mphhi_prepaymentrequired);
-              if(selectedOutPatientService.mphhi_prepaymentrequired == true){
-                $("#mphhi_paymentmethod").children('option:eq(3)').hide();
-              } else {
-                $("#mphhi_paymentmethod").children('option:eq(3)').show();
-              }
+    $("a[href='#Files']").on("click", function () { scrollToAndFocus('Files','Files'); } );
+    
+
+    // gumagana to pero sa step 1 lang AHHAHAHA
+      // Negate submission if medicine subgrid does not contain data
+      if (typeof (Page_Validators) == 'undefined') return;
+      // Validator definition
+      // Require at least one educational background
+      var medicationValidator = document.createElement('span');
+      medicationValidator.style.display = "none";
+      medicationValidator.id = "MedicationValidator";          
+      medicationValidator.errormessage = "At least one Medication entry is required.";            
+      medicationValidator.evaluationfunction = function () {
+          var rowCount = 0;
+          rowCount = $("#medicine_subgrid table tbody tr").length;
+          if (rowCount <=0) {
+              return false;
           }
           else {
-              // $("#mphhi_timeslotdate").val("").change();
-              console.log("No outpatient service selected.");
+              return true;
           }
-       
-    // );
-  }
-  
-//   $("#mphhi_outpatientservice").change();
-  // =======================================================================================================================================================================
-  $("#mphhi_outpatientservice").parent().parent().parent().hide();
-  });
+      };            
+      
+      Page_Validators.push(medicationValidator);
+
+          // Medication validator {oTHER KIND OF VALIDATOR}
+    var MedicationValidator = document.createElement('span');
+    MedicationValidator.style.display = "none";
+    MedicationValidator.id = "MedicationValidator";
+    MedicationValidator.controltovalidate = "mphhi_paymentoption";
+    MedicationValidator.errormessage = "<a href='#mphhi_paymentoption_label'>At least one Medication entry is required.</a>";
+    MedicationValidator.validationGroup = ""; // Set this if you have set ValidationGroup on the form
+    MedicationValidator.initialvalue = "";
+    MedicationValidator.evaluationfunction = function () {
+      if ($("#medicine_subgrid tbody").children().length) {
+          return true;
+      }
+      else {
+          return false;
+      }
+    };
+    // Add the new validator to the page validators array:
+    Page_Validators.push(MedicationValidator);
+    // Wire-up the click event handler of the validation summary link
+    $("a[href='#medicine_subgrid']").on("click", function () { scrollToAndFocus('mphhi_paymentoption_label','mphhi_paymentoption'); });
+});

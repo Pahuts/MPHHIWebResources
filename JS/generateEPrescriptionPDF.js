@@ -1,5 +1,5 @@
 function callGeneratePDFAction(formContext) {
-    formContext.ui.setFormNotification("Documents are being uploaded to sharepoint. Files with the same file name will be overwritten.",  "INFO", "1");
+    formContext.ui.setFormNotification("Documents are being uploaded to sharepoint.",  "INFO", "1");
     var aptID = Xrm.Page.data.entity.getId();
     var aptIDSlice = aptID.slice(1,-1);
     console.log("Appointment GUID: " + aptIDSlice);
@@ -45,7 +45,7 @@ function callGeneratePDFAction(formContext) {
     parameters.AptTemplateId = "";
     parameters.AptRecordId = aptIDSlice;
     parameters.OtherTypeCode = 10828;
-    parameters.OtherTemplateId = "09c76292-56bf-eb11-8236-000d3a1b6443";
+    parameters.OtherTemplateId = "02cc4ea5-56d4-eb11-bacc-0022481ff135";  //09c76292-56bf-eb11-8236-000d3a1b6443
     parameters.OtherRecordId = mphhi_eprescriptionid;
     
     var mphhi_CustomActionCallRxPDFGeneratorRequest = {

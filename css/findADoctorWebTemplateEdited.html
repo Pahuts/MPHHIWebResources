@@ -1,0 +1,287 @@
+{% extends 'Layout 1 Column' %}
+{% block main %}
+  {% include 'Page Copy' %}
+<div class="container" role="main">
+   <!-- {% include 'Child Navigation' showdescriptions: true %} -->
+<h1 class="title"> Find a Doctor </h1>
+    {% if page.adx_entitylist %}
+    {% include 'entity_list' key: page.adx_entitylist.id %}
+    {% endif %}
+
+    {% if page.adx_entityform %}
+    {% entityform id: page.adx_entityform.id %}
+    {% endif %}
+
+    {% if page.adx_webform %}
+    {% webform id: page.adx_webform.id %}
+    {% endif %}
+</div>
+
+<script>
+  $(document).ready(function() {
+      //$("<td style='width: 50% !important; float: right; margin-top: -40px !important;padding-bottom: 0px !important; margin-bottom: 0px !important;'><button class='btn btn-primary button' onclick=>Book an Appointment</button></td>").insertAfter('td[data-th="Doctor"]'); //add button
+      //$('.entity-grid').before('<span style="background-color: yellow; font-style: italic"><p style="background-color: yellow;">This form is under construction</p></span>');
+      
+  });
+
+  $(".entitylist.entity-grid").on("loaded", function () {
+     
+      // on screen resolution change
+    $( window ).resize(function() {
+      if ($( window ).width() < 600 ){ 
+        $(".btn-primary.virtual").html("<i class='fas fa-check'></i> Virtual");
+        $(".btn-primary.clinic").html("<i class='fas fa-check'></i> Clinic");
+        $("#disabled-clinic .disabled").html("<i class='fas fa-times'></i> Clinic");
+        $("#disabled-virtual .disabled").html("<i class='fas fa-times'></i> Virtual");
+      } else if ($( window ).width() < 1200) {
+        $(".btn-primary.virtual").html("<i class='fas fa-check'></i> Book Virtual");
+        $(".btn-primary.clinic").html("<i class='fas fa-check'></i> Book Clinic");
+        $("#disabled-clinic .disabled").html("<i class='fas fa-times'></i> Book Clinic");
+        $("#disabled-virtual .disabled").html("<i class='fas fa-times'></i> Book Virtual");
+      } else {
+        $(".btn-primary.virtual").html("<i class='fas fa-check'></i> Book Virtual Consultation");
+        $(".btn-primary.clinic").html("<i class='fas fa-check'></i> Book Clinic Consultation");
+        $("#disabled-clinic .disabled").html("<i class='fas fa-times'></i> Book Clinic Consultation");
+        $("#disabled-virtual .disabled").html("<i class='fas fa-times'></i> Book Virtual Consultation");
+      }
+    });
+
+
+   var query = $(".query").val();
+   var sDropdown = $("#dropdown_0").val();
+   var hDropdown= $("#dropdown_1").val();
+
+    if (query || sDropdown || hDropdown) {
+      $(".table").css("display", "table");
+      $('.view-pagination').show();
+    } else {
+      $(".table").css("display", "none");
+      $('.view-pagination').hide();
+    }
+
+    // $("#dropdown_0").change();
+    // $("#dropdown_1").change();
+    
+    // add Fee Header
+    // $("td[data-th='Professional Fee']").prepend("<p class='Fee'>Fee </p>");
+    function onPrimaryChange()
+    {
+        $('button[data-target="#EntityList9b553251-3aa2-eb11-b1ac-000d3a55ac4e"]').click();
+        if (query || sDropdown || hDropdown) {
+          $(".table").css("display", "table");
+          $('.view-pagination').show();
+        } else {
+          $(".table").css("display", "none");
+          $('.view-pagination').hide();
+        }
+    }
+    $("#dropdown_0").change(onPrimaryChange);
+    $("#dropdown_1").change(onPrimaryChange);
+    $('button[data-target="#EntityList9b553251-3aa2-eb11-b1ac-000d3a55ac4e"]').hide();// hide apply filter button
+
+
+    $('td[aria-label="action menu"]').hide();// hide oob view button
+    
+    
+    //$('div[class="pull-right toolbar-actions"]').prependTo(".entitylist");
+    $('input[class="query form-control"]').attr('placeholder',"Search for Specialty, Hospital name or your Doctor's name"); //relabel place holder
+    //$('div[class="pull-right toolbar-actions"]').appendTo("#entitylist-filters");
+    $('#EntityList9b553251-3aa2-eb11-b1ac-000d3a55ac4e').appendTo('div[class="view-toolbar grid-actions clearfix"]');
+
+    
+    //check if appointment type is yes
+    //$('td[aria-label="E-Consultation Yes"]').prepend('<div style="color: #5BBA47;"><h5>Consultation</h5></div>');
+    // $('td[aria-label="E-Consultation Yes"]').html("<i class='fa fa-check-circle-o'style='color: #5BBA47;'></i> E-Consultation"); // E-consultation
+    // $('td[aria-label="E-Consultation No"]').html(""); // E-consultation
+    
+    // $('td[aria-label="Face to Face Yes"]').html("<i class='fa fa-check-circle-o' style='color: #5BBA47;'></i> Face to Face"); // Face to face
+    // $('td[aria-label="Face to Face No"]').html(""); // Face to face
+
+    $('td[aria-label="E-Consultation Yes"]').html("<a class='virtual-c' id='virtual'><button class='btn-primary virtual' value='Book Virtual Consultation'><i class='fas fa-check'></i> Book Virtual Consultation</button></a>"); // E-consultation
+    $('td[aria-label="E-Consultation No"]').html("<a class='disabled' id='disabled-virtual'><button class='btn-primary disabled' value='Book Virtual Consultation'><i class='fas fa-times'></i> Book Virtual Consultation</button></a>"); // E-consultation
+    //$('td[aria-label="E-Consultation No"]').html("<span class='red-color'>N/A for Virtual Consultation</span>"); // E-consultation
+    
+    $('td[aria-label="Face to Face Yes"]').html("<a class='clinic-c' id='clinic'><button class='btn-primary clinic' value='Book Clinic Consultation'><i class='fas fa-check'></i> Book Clinic Consultation</button></a>"); // Face to face
+    $('td[aria-label="Face to Face No"]').html("<a class='disabled' id='disabled-clinic'><button class='btn-primary disabled' value='Book Clinic Consultation'><i class='fas fa-times'></i> Book Clinic Consultation</button></a>"); // Face to face
+    //$('td[aria-label="Face to Face No"]').html("<span class='red-color'>N/A for Clinic Consultation</span>"); // Face to face
+
+    //add header 
+    // $('td[data-th="Doctor"]').prepend('<div style="color: #5BBA47; margin-bottom: 0;"><h5>Doctor</h5></div>'); // to hospital
+    // $('td[data-th="Hospital"]').prepend('<div style="color: #5BBA47;"><h5>Affiliated Hospital</h5></div>'); // to hospital
+    // $('td[data-th="E-Consultation"]').prepend('<div style="color: #5BBA47;"><h5>Consultation</h5></div>'); // to econsult
+    // $('td[data-th="Professional Fee"]').prepend('<div style="color: #5BBA47;"><h5>Fee</h5></div>'); // to fee
+
+    // add id to consultation fees
+    
+    // $("td[data-attribute='mphhi_professionalfeefacetoface']").attr("class","f2ffee"); // f2f fee
+    
+    // $(".virtualfee").css("display","none");
+    // $(".f2ffee").css("display","none");
+
+    // $('<div style="color: #5BBA47;"><h5>Consultation</h5></div>').prependTo('td[data-th="E-Consultation"]'); // to econsult
+    // $('td[aria-label="E-Consultation Yes"]').prepend('<div style="color: #5BBA47;"><h5>Consultation</h5></div>');
+    // $('<div style="color: #5BBA47;"><h5>Consultation</h5></div>').prependTo('td[data-attribute="mphhi_econsultation"]'); // to econsult
+    // $('tr').append('<td data-type="System.Boolean"  data-value="true" ></td>'); // extra space for bottom
+
+    // $('td[data-th="E-Consultation"]').prepend('<div style="color: #5BBA47;"><h5>Consultation</h5></div>');
+    // $('td:nth-child(5)').prepend('<div style="color: #5BBA47;"><h5>Consultation</h5></div>'); 
+
+    // if(($('td[aria-label="E-Consultation Yes"]') == true) && ($('td[aria-label="Face to Face No"]') == true))
+    // {
+    //     $('td[aria-label="E-Consultation Yes"]').html("E-Consultation"); // E-consultation
+    //     $('td[aria-label="E-Consultation Yes"]').prepend('<div class="Consultation" style="color: #5BBA47;"><h5>Consultation</h5></div>');
+
+    //     $('td[aria-label="Face to Face No"]').html(""); // Hide Face to face
+    // }
+    // if(($('td[aria-label="E-Consultation No"]') == true) && ($('td[aria-label="Face to Face Yes"]') == true))
+    // {
+    //     $('td[aria-label="Face to Face Yes"]').html("Face to Face"); // Face to face
+    //     $('td[aria-label="Face to Face Yes"]').prepend('<div class="Consultation" style="color: #5BBA47;"><h5>Consultation</h5></div>');
+
+    //     $('td[aria-label="E-Consultation No"]').html(""); // Face to face
+    // }
+
+    
+    //$("tr[data-entity='mphhi_associatedhospital']").append("<td class='book-doctor-container'><a class='btn btn-primary button' href=''>View</a></td>");
+    // $(".book-doctor-container").on('click', function () {
+    //   var row = $(this).closest('tr');
+    //   var trID = row.attr('data-id');
+    //   var trName = row.attr('data-name');
+    //   var href = "https://mphhi-dev-us.powerappsportals.com/find-a-doctor/find-a-doctor-view/?id={{trID}}";
+
+    //   $('.book-doctor-container').attr("href", href);
+    // });
+    
+    //$("<td class='book-doctor-container' style='width: 50% !important; float: right; margin-top: -40px !important;padding-bottom: 0px !important; margin-bottom: 0px !important;'></td>").insertAfter('td[data-th="Doctor"]'); //add button
+    //$("<td style='width: 50% !important; float: right; margin-top: -40px !important;padding-bottom: 0px !important; margin-bottom: 0px !important;'></td>").insertAfter('td[data-th="Doctor"]'); //add button
+    //$('a[class="details-link"][title="View details"]').prependTo(".button");
+    //$('a[class="details-link"][title="View details"]').prependTo(".button");
+    //$('td:nth-child(5)').prependTo("td:nth-child(2)");
+
+    // buttons functionality
+    $(this).children(".view-grid").find("ul").each(function (){
+      // get id and name of Associated Hospital
+        var row = $(this).closest('tr');
+        var trID = row.attr('data-id'); // associated hospital id
+        $("tr[data-id='"+trID+"']").find("td[data-attribute='mphhi_doctor']").attr("id", trID); // find and add id to doctor td
+        // unhide later
+        console.log("TR ID: "+trID );
+        $("tr[data-id='"+trID+"']").find(".virtual-c").attr("href","https://mphhi-dev-us.powerappsportals.com/new-appointment-web-form/?type=virtual&aid="+trID+"");
+        $("tr[data-id='"+trID+"']").find(".clinic-c").attr("href","https://mphhi-dev-us.powerappsportals.com/new-appointment-web-form/?type=clinic&aid="+trID+"");
+        // onclick of tr function 
+        $("tr[data-id='"+trID+"']").click(function() {
+        var row2 = $(this).closest('tr');
+        var tableRowID = row.attr('data-id'); // associated hospital id
+          window.location.href="https://mphhi-dev-us.powerappsportals.com/find-a-doctor/find-a-doctor-view/?id="+tableRowID+"";
+        });
+        var trName = row.attr('data-name');
+        var aHospitalEntityName = "mphhi_associatedhospital";
+        // get department data name, guid, entityname 
+        // var dColumn = row.find("td[data-attribute='mphhi_department']");
+        // var specializationData = dColumn.attr("data-value");
+        // var splitSpecialization = specializationData.split(/[^A-Za-z0-9,-\s]/);
+        // var specializationName = splitSpecialization[16];
+        // var specializationGUID = splitSpecialization[5];
+        // var specializationEntityName = "mphhi_department";
+
+        // console.log(`${specializationName} ${specializationGUID} ${specializationEntityName}`);
+        // get Doctor data name,guid,entityname
+        var dColumn = row.find("td[data-attribute='mphhi_doctor']");
+        var doctorData = dColumn.attr("data-value");
+        var splitDoctor = doctorData.split(/[^A-Za-z0-9,-\s]/);
+        var trID = splitDoctor[15];
+        var doctorGUID = splitDoctor[5];
+        var doctorEntityName = "mphhi_doctor";
+        console.log(`${trID} ${doctorGUID} ${doctorEntityName}`);
+
+        // get Specialization data name, guid, entityname
+        var sColumn = row.find("td[data-attribute='mphhi_primaryspecialization']");
+        var specialData = sColumn.attr("data-value");
+        var splitSpecial = specialData.split(/[^A-Za-z0-9,-\s]/);
+        var specialName = splitSpecial[16];
+        var specialGUID = splitSpecial[5];
+        var specialEntityName = "mphhi_specializationmaster";
+        console.log(`${specialName} ${specialGUID} ${specialEntityName}`);
+
+        // get Hospital data name, guid, entityname
+        var hColumn = row.find("td[data-attribute='mphhi_hospital']");
+        var hospitalData = hColumn.attr("data-value");
+        var splitHospital = hospitalData.split(/[^A-Za-z0-9,-\s]/);
+        var hospitalName = splitHospital[16];
+        var hospitalGUID = splitHospital[5];
+        var hospitalEntityName = "msemr_location";
+        console.log(`${hospitalName} ${hospitalGUID} ${hospitalEntityName}`);
+        
+
+        //var href = "https://mphhi-dev-us.powerappsportals.com/find-a-doctor/find-a-doctor-view/?id={{trID}}";
+        
+        //$('.book-doctor-container').attr("href", href);
+        // $("tr[data-id='"+trID+"']").find("td[data-attribute='mphhi_doctor']").attr("id", trID); // find and add id to doctor td
+        // $("tr[data-id='"+trID+"']").attr("id", trID); // find and add id to tr
+        
+        // unhide later
+        //$("tr[data-id='"+trID+"']").find('td[data-th="E-Consultation"]').attr("id", trID); // find and add class to td
+        // $("tr[data-id='"+trID+"']").find('td[data-attribute="mphhi_professionalfee"]').attr("id", "virtualfee"+trID); // find and add class to td
+        // -------------
+
+        //$("tr[data-id='"+trID+"']").find('td[data-th="E-Consultation"]').attr("id", trID);
+        //$("tr[data-id='"+trID+"']").append("<td class='book-doctor-container'><a class='btn btn-primary button' href='https://mphhi-dev-us.powerappsportals.com/find-a-doctor/find-a-doctor-view/?id="+trID+"'>View</a></td>");
+        
+        // unhide later
+        //$("<td id='tdbutton"+trID+"' class='book-doctor-container' style='position: relative; width: 14%; padding: 10px !important; width: 20%'></td>").insertAfter('td[id="'+trID+'"]'); //add button
+        // -------------
+        
+        //$("<td id='tdbutton"+trID+"' class='book-doctor-container'></td>").insertAfter('td[id="'+trID+'"]'); //add button
+        // HIDE DAW MUNA TONG VIEW SABI NI MS CHELSEA
+        // $("td[id='tdbutton"+trID+"']").append("<a class='btn btn-primary button' href='https://mphhi-dev-us.powerappsportals.com/find-a-doctor/find-a-doctor-view/?id="+trID+"'>View</a>");
+        // Book appointment button
+        //$("<td id='tdbutton"+trID+"' class='book-doctor-container' style='position: relative; height: 40px; width: 14%; padding: 10px !important; width: 20% !important; margin-left: 29%;'></td>").insertAfter('td[id="'+trID+'"]'); //add button
+        
+        
+        // unhide later
+				//$("td[id='tdbutton"+trID+"']").attr("<a class='btn btn-primary button' href='https://mphhi-dev-us.powerappsportals.com/new-appointment-web-form/?hid="+hospitalGUID+"&hname="+hospitalName+"&hename="+hospitalEntityName+"&aid="+trID+"'>Book</a>");
+
+        
+        // -------------
+        
+        
+        // $(".virtualfee").insertBefore(".btn .btn-primary .button");
+        //$');("<a class='btn btn-primary button' href='https://mphhi-dev-us.powerappsportals.com/find-a-doctor/find-a-doctor-view/?id="+trID+"'>View</a>").insertAfter('td[data-th="Doctor"]
+        // do something with each row
+        //$('td:nth-child(5)').css("position","");
+        //$(this).prependTo("td:nth-child(2)");
+        //$('td:nth-child(5)').prependTo("td:nth-child(2)");
+        //$( 'td[data-th="Doctor"]' ).clone().prependTo("td:nth-child(2)");
+    });
+    
+  });
+</script>
+{% if user | has_role:"Anonymous Users" %}
+  <script>
+    $('a[href="/corporate-appointments/"][role="menuitem"]').hide(); // hide corporate appointments in header 
+  </script> 
+
+{% elsif user | has_role:"Authenticated Users" %}
+
+  <script>
+    $('a[href="/corporate-appointments/"][role="menuitem"]').hide(); // hide corporate appointments in header 
+  </script> 
+
+  {% elsif user | has_role:"Corporate Representative" %}
+  <script>
+    $('a[class="weblink list-group-item"][href="/profile/profile-my-appointments/"][title="Appointments"][aria-label="Appointments"]').hide(); //hide appointments
+        $('a[class="weblink list-group-item"][href="/profile/profile-my-medical-histories/"][title="Medical History"][aria-label="Medical History"]').hide(); //hide medical history
+        $('a[class="weblink list-group-item"][href="/guarantors/"][title="Guarantors"][aria-label="Guarantors"]').hide(); //hide guarantors
+        $('a[class="weblink list-group-item"][aria-label="Manage My Dependents"]').hide(); //hide dependents weblink
+        $('a[href="/dependents/"][role="menuitem"][aria-label="Manage My Dependents"]').hide(); // hide dependents in header dropdown
+        $('a[href="/my-appointments/dependents-appointments/"][role="menuitem"]').hide(); // hide dependents appointments in header dropdown
+        $('a[title="Appointments"][class="dropdown-toggle"][role="menuitem"]').hide(); // hide appointments in header 
+        $('a[href="/pharmacy-orders/"][role="menuitem"]').hide(); // hide appointments in header 
+  </script>
+
+{% else %}
+
+
+{% endif %}
+
+{% endblock %}

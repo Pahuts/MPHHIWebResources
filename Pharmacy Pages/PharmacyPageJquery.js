@@ -118,7 +118,7 @@ $('fieldset[aria-label="Order Type"]').find('legend[class="section-title"]').app
 $("fieldset[aria-label='Previous Appointment'] .section-title").append("<br><p class='attach-files-subgrid'>Please select your previous appointment in referrence for this Pharmacy Order.<br>Medications prescribe to you in the selected previous appointment will also be shared to the Pharmacy Store.</p>");
 
 // add class to step 3 subgrids
-$("fieldset[aria-label='Attach the Files you want to share with the Pharmacy Store'] .section-title").append("<br><p class='attach-files-subgrid'>Please attach if you have any Discount IDs and a copy of your Prescription.<br>The file you want to attach should not exceed 5 mb. Only .docx, .xlsx, .pdf, .jpg, and .png file types are allowed.</p>");
+$("fieldset[aria-label='Attach the Files you want to share with the Pharmacy Store'] .section-title").append("<br><p class='attach-files-subgrid'>Please attach if you have any Discount IDs and a copy of your Prescription.<br>The file you want to attach should not exceed 2 mb. Only .docx, .xlsx, .pdf, .jpg, and .png file types are allowed.</p>");
 
 $("fieldset[aria-label='Medication List'] .section-title").append("<br><p class='medication-subgrid'>List all the medicines that you want to order. Prices and availabilities will be available once your order has been processed.</p>");
 
@@ -179,10 +179,11 @@ $("fieldset[aria-label='Medication List'] .section-title").append("<br><p class=
     let fileSizeInMB = fileSizeInBytes / 1048576; // generates the file size into MB
     let fileInput = document.getElementById('filer');
     //alert(fileSizeInMB);
-    if(fileSizeInMB > 5) { // check if file size is greater than 5 mb
-        alert('File exceeds 5mb.');
+    if(fileSizeInMB > 2) { // check if file size is greater than 5 mb
+        alert('File exceeds 2 mb.');
         fileInput.value = '';
         return false;
     }
   });
+  
 });

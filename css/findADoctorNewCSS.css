@@ -4,27 +4,6 @@
 .grid-actions {
      border-bottom: 0 solid white; 
 }
-
-.btn-primary {
-  background-color: #0f4b90 !important;
-}
-
-/* button borders / search box*/
-.input-group-btn .btn {
-    color: #0f4b90 !important;
-    border-color: #0f4b90 !important;
-}
-.input-group-addon {
-    color: #0f4b90;
-    border: 1px solid #0f4b90;
-}
-.input-group .form-control {
-    border-color: #0f4b90 !important;
-}
-
-a[data-original-title='View details'] {
-  color: #0f4b90;
-}
 .panel {
   border: 0 solid white; 
 }
@@ -41,17 +20,12 @@ padding-left:10px;
   background-color: #dddddd !important;
   color: gray !important;
 }
-.disabled:hover {
-  background-color: #dddddd !important;
-  color: gray !important;
-}
 .entitylist-search {
     width: 100%;
 }
 
 .btn-primary:hover {
-  border-color: transparent !important;
-  background-color: #000080!important;
+  border-color: white !important;
 }
 
 .table-striped>tbody>tr:nth-of-type(odd) {
@@ -112,7 +86,7 @@ padding-left:10px;
   .btn-primary {
     color: white !important;
     background-color: #5BBA47;
-    border-color: transparent !important;
+    border-color: white !important;
     border-radius: 5px !important;
     width: 90%;
     padding-top: 2px;
@@ -123,10 +97,6 @@ padding-left:10px;
     background-color: #dddddd !important;
     color: gray !important;
   }
-  .disabled:hover {
-  background-color: #dddddd !important;
-  color: gray !important;
-}
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -182,7 +152,7 @@ padding-left:10px;
   .btn-primary {
     color: white !important;
     background-color: #5BBA47;
-    border-color: transparent !important;
+    border-color: white !important;
     border-radius: 5px !important;
     width: 35%;
     padding-top: 2px;
@@ -193,10 +163,6 @@ padding-left:10px;
     background-color: #dddddd !important;
     color: gray !important;
   }
-  .disabled:hover {
-  background-color: #dddddd !important;
-  color: gray !important;
-}
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -339,13 +305,13 @@ padding-left:10px;
     width: 90%;
     border-radius: 5px;
     padding: 10px;
-    border-color: transparent !important;
+    border-color: white !important;
   }
   .clearfilter {
     height: 39px;
     width: 7%;
     /* padding: 10px; */
-    border-color: transparent !important;
+    border-color: white !important;
     text-align: center;
     float: right;
     margin-top: 41px;
@@ -355,10 +321,6 @@ padding-left:10px;
     background-color: #dddddd !important;
     color: gray !important;
   }
-  .disabled:hover {
-  background-color: #dddddd !important;
-  color: gray !important;
-}
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -498,14 +460,13 @@ padding-left:10px;
     /* width: 90%; */
     border-radius: 5px;
     padding: 10px;
-    border-color: transparent !important;
-    font-size: 14px;
+    border-color: white !important;
   }
   .clearfilter {
     height: 39px;
     width: 7%;
     /* padding: 10px; */
-    border-color: transparent !important;
+    border-color: white !important;
     text-align: center;
     float: right;
     margin-top: 41px;
@@ -515,8 +476,4 @@ padding-left:10px;
     background-color: #dddddd !important;
     color: gray !important;
   }
-  .disabled:hover {
-  background-color: #dddddd !important;
-  color: gray !important;
-}
 }

@@ -1,0 +1,17 @@
+div.description {
+  font-style: italic;
+  font-size: 14px;
+}
+
+.input-group .form-control:first-child, .input-group-addon:first-child, .input-group-btn:first-child>.btn, .input-group-btn:first-child>.btn-group>.btn, .input-group-btn:first-child>.dropdown-toggle, .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle), .input-group-btn:last-child>.btn-group:not(:last-child)>.btn
+{
+  height: 35px
+}
+
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+    height: 35px;
+}
+
+#mphhi_ageportaldisabled {
+  width: 15%;
+}

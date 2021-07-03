@@ -8,7 +8,7 @@ function onLoadCalculation(executionContext) {
   var newDiscountValue = formContext.getAttribute("mphhi_discountamount");
 
     if(pwdValue == true && seniorCitizenValue == true && !discountAmountValue) { // discount of pwd and senior citizen is 20% each
-      var currentDiscountValue = grossAmountValue * .4 // senior citizen and pwd combined
+      var currentDiscountValue = grossAmountValue * .2 // senior citizen and pwd combined
       newDiscountValue.setValue(currentDiscountValue);
       var totalDiscount = newDiscountValue.getValue();
       var newNetAmountValue = formContext.getAttribute("mphhi_netamountcustomcalculated").setValue(grossAmountValue - totalDiscount);
@@ -45,7 +45,7 @@ function grossAmountChange(executionContext) {
   var newDiscountValue = formContext.getAttribute("mphhi_discountamount");
 
   if(pwdValue == true && seniorCitizenValue == true) {
-    var currentDiscountValue = grossAmountValue * .4 // senior citizen and pwd combined
+    var currentDiscountValue = grossAmountValue * .2 // senior citizen and pwd combined // laging .2 lang
     newDiscountValue.setValue(currentDiscountValue);
     var totalDiscount = newDiscountValue.getValue();
   } else if(pwdValue == true) {
@@ -79,7 +79,7 @@ function discountAmountChange(executionContext) {
   var newDiscountValue = formContext.getAttribute("mphhi_discountamount");
 
   // if(pwdValue == true && seniorCitizenValue == true) {
-  //   var currentDiscountValue = grossAmountValue * .4 // senior citizen and pwd combined
+  //   var currentDiscountValue = grossAmountValue * .2 // 
   //   newDiscountValue.setValue(currentDiscountValue + discountAmountValue);
   //   var totalDiscount = newDiscountValue.getValue();
   // } else if(pwdValue == true) {

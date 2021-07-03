@@ -1,0 +1,213 @@
+  /* */
+  body {
+    background-image: url('../validator_bg.jpg');
+    background-size: cover;
+  }
+
+  /* footer */
+  footer .footer-bottom {
+    position: fixed;
+    bottom: 0;
+  }
+
+  /* button */
+  .backtohome {
+    color: #f5f5f5;
+    background-color: #5BBA47!important;
+    border-color: #5BBA47!important;
+    outline: none;
+    padding: 10px 35px;
+    width: 511px;
+    height: 70px;
+    font-weight: bold;
+    font-family: 'Cocogoose';
+
+  }
+
+  .backtohome:hover {
+    text-decoration: none;
+    color: white !important;
+    background-color: #3f8331 !important;
+    border-color: #3f8331 !important;
+  }
+  /* start editing divs */
+  .box-cent {
+    margin: auto;
+    margin-top: 10%;
+    width: 55%;
+    height: 340px;
+    border: 1px solid transparent;
+    padding: 10px;
+    background: white;
+    color: black;
+    text-align: center;
+  }
+
+  .box-logo {
+    margin: auto;
+    text-align: center;
+    margin: 20px;
+  }
+
+  .qr-code-state {
+    font-family: "Cocogoose", sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+  }
+
+  .content {
+    font-family: "Open Sans";
+    font-size: 16px;
+    margin-bottom: 5%;
+  }
+  .qr-content {
+    font-weight: bold;
+  }
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+    .box-cent {
+      width: 93%;
+      height: 387px;
+    }
+    .content {
+      font-size: 14px;
+    }
+    .qr-content {
+      margin-bottom: 1%;
+    }
+    .bot-button {
+      margin-top: 10%;
+      font-size: 14px;
+   }
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+    .box-cent {
+      width: 93%;
+      height: 387px;
+    }
+    .content {
+      font-size: 14px;
+      margin-bottom: 11%;
+    }
+    .qr-content {
+      margin-bottom: 1%;
+    }
+
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    .box-cent {
+      margin: auto;
+      margin-top: 10%;
+      width: 88%;
+      height: 340px;
+      border: 1px solid transparent;
+      padding: 10px;
+      background: white;
+      color: black;
+      text-align: center;
+  }
+
+
+    
+    .box-logo {
+      margin: auto;
+      text-align: center;
+      margin: 20px;
+    }
+    .qr-code-state {
+      font-family: "Cocogoose", sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    
+    .content {
+      font-family: "Open Sans";
+      font-size: 16px;
+      margin-bottom: 5%;
+    }
+    .qr-content {
+      margin-bottom: 1%;
+    }
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    /* footer */
+    footer .footer-bottom {
+      position: fixed;
+      bottom: 0;
+    }
+    .box-cent {
+      margin: auto;
+      margin-top: 10%;
+      width: 70%;
+      height: 357px;
+      border: 1px solid transparent;
+      padding: 10px;
+      background: white;
+      color: black;
+      text-align: center;
+  }
+    
+    .box-logo {
+      margin: auto;
+      text-align: center;
+      margin: 20px;
+    }
+    .qr-code-state {
+      font-family: "Cocogoose", sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    
+    .content {
+      font-family: "Open Sans";
+      font-size: 16px;
+      margin-bottom: 5%;
+    }
+    .qr-content {
+      margin-bottom: 1%;
+    }
+  }
+
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    /* footer */
+    footer .footer-bottom {
+      position: fixed;
+      bottom: 0;
+    }
+    .box-cent {
+      margin: auto;
+      margin-top: 10%;
+      width: 55%;
+      height: 340px;
+      border: 1px solid transparent;
+      padding: 10px;
+      background: white;
+      color: black;
+      text-align: center;
+    }
+    
+    .box-logo {
+      margin: auto;
+      text-align: center;
+      margin: 20px;
+    }
+    .qr-code-state {
+      font-family: "Cocogoose", sans-serif;
+      font-size: 26px;
+      font-weight: 600;
+    }
+    
+    .content {
+      font-family: "Open Sans";
+      font-size: 16px;
+      margin-bottom: 5%;
+    }
+  } 

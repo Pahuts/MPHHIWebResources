@@ -1,0 +1,337 @@
+{% extends 'Layout 1 Column' %}
+{% block main %}
+  {% include 'Page Copy' %}
+<script src="https://kit.fontawesome.com/800ee6d02c.js" crossorigin="anonymous"></script>
+
+<div class="container" role="main">
+   <!-- {% include 'Child Navigation' showdescriptions: true %} -->
+    {% if page.adx_entityform %}
+    <div class="col-md-12">
+      <div class="col-md-3" style="text-align: center;"> <!-- START OF IMAGE DIV-->
+        <script>
+          var image = "<img width='200px' id='doctorpicture' style='border-radius: 100px; /* border: 10px solid #5BBA47; */' src='https://prod-159.westus.logic.azure.com:443/workflows/119827b09e4b4923abfaec37fd81d540/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=CuszdGLKkwGAH5TqY3Sq93khbqAqo5l0fO9iTFP7WL8&documentId=" + (location.search.split('id=')[1] || '').split('&')[0] + "'/>"; 
+          document.write(image);
+          </script>
+      </div> <!-- END OF IMAGE DIV-->
+      <div class="col-md-9" style="margin-top: 20px;"> <!-- START OF ENTITY FORM DIV-->
+        {% entityform id: page.adx_entityform.id %}
+      </div> <!-- END OF ENTITY FORM DIV-->
+    </div>
+
+    <!--  {% if page.adx_entitylist %}
+      {% include 'entity_list' key: page.adx_entitylist.id %}
+      {% endif %} -->
+      <div class="row">
+        <div class="associated-Specialiations">
+          <div class="col-md-6 affiliatedHospital"> 
+            <h3> Affiliated Hospitals </h3>
+              <div id="assocHosp"class="assocHosp"></div>
+          </div>
+          <div class="col-md-6 specialization"> 
+            <h3> Specializations </h3>
+              <div id="special" class="special"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="associated-hmo">
+          <div class="col-md-6 affiliatedHospital"> 
+            <h3> HMOs </h3>
+              <div id="hmos"class="hmos"></div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if page.adx_webform %}
+    {% webform id: page.adx_webform.id %}
+    {% endif %}
+</div>
+<script>
+    //$("#mphhi_photo").html(""); 
+    //$("#doctorpicture").appendTo("#mphhi_photo"); // move image to proper place
+    //$("#mphhi_doctor_name").parent().parent().css(""); 
+    //$("#mphhi_doctor_name").parent().parent().parent().css("border-bottom", "1px solid #eee;");
+    //$("#mphhi_doctor_name").closest("tr").css("border-bottom", "1px solid #eee;");
+    //$("#mphhi_doctor_name").closest("tr").parent().append('<tr class="spacer"></tr>'); 
+    $(document).ready(function() {
+    var docID = $("#mphhi_doctor").attr('value');
+    // Create Odata Script
+    //============================================================================
+    // OData query for Associated Hospitals - Get all values and then edit html css
+    var assHoc = [];
+    var assHocServicesURL = "~/_odata/AssocHospitals";
+    $.ajax({
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        datatype: "json",
+        url: assHocServicesURL,
+        beforeSend: function(XMLHttpRequest) {
+            XMLHttpRequest.setRequestHeader("Accept", "application/json");
+        },
+        async: false,
+        success: function(data, textStatus, xhr) {
+          assHoc = assHoc.concat(data.value);
+          assHocServicesURL = data["odata.nextLink"];
+        }
+    });
+    // GET ODATA RESULT BEFORE EXECUTING
+    var asHospArray = [];
+    var specArray = [];
+    var virtual = "";
+    var f2f = "";
+        function getAssociatedHospitals() {
+          var doctorAssocHospitals = {};
+          doctorAssocHospitals = assHoc.find(
+            function(assHocObject) {
+              // check current guid to the list of odata
+              if(docID == assHocObject.mphhi_doctor["Id"]) {
+                virtual = assHocObject.mphhi_econsultation;
+                f2f = assHocObject.mphhi_facetoface;
+                console.log(virtual, f2f);
+                console.log(assHocObject.mphhi_hospital);
+                asHospArray.push(assHocObject.mphhi_hospital["Name"]);
+                specArray.push(assHocObject.mphhi_primaryspecialization["Name"])
+              }
+              // return (docID == assHocObject.mphhi_doctor["Id"]); // check guid
+            }
+          );
+        }
+        getAssociatedHospitals(); // initiate function
+        for(let aH of asHospArray) { // get each 
+          $("#assocHosp").append("<i class='fas fa-clinic-medical' style='color: #0f4b90;'></i> " +aH + "<br>");
+        }
+        for(let spec of specArray) { // get each 
+          $("#special").append("<i class='fas fa-stethoscope' style='color: #0f4b90;'></i> " +spec + "<br>");
+      }
+    // End of Associated Hospitals Odata Query
+    // =============================================================================
+
+        // Create Odata Script
+
+
+    // End of Associated Hospitals Odata Query
+    // =============================================================================
+    
+    // Create Odata Script (HMOS)
+    //============================================================================
+    // OData query for Associated Hospitals - Get all values and then edit html css
+    // var assHocHMOS = [];
+    // var assHocHMOSServicesURL = "~/_odata/HMOs";
+    // $.ajax({
+    //     type: "GET",
+    //     contentType: "application/json; charset=utf-8",
+    //     datatype: "json",
+    //     url: assHocHMOSServicesURL,
+    //     beforeSend: function(XMLHttpRequest) {
+    //         XMLHttpRequest.setRequestHeader("Accept", "application/json");
+    //     },
+    //     async: false,
+    //     success: function(data, textStatus, xhr) {
+    //       assHocHMOS = assHocHMOS.concat(data.value);
+    //       assHocHMOSServicesURL = data["odata.nextLink"];
+    //     }
+    // });
+    // // GET ODATA RESULT BEFORE EXECUTING
+    // var hmoArray = [];
+    //     function getHMOs() {
+    //       var doctorHMOS = {};
+    //       doctorHMOS = assHocHMOS.find(
+    //         function(assHMOObject) {
+    //           // check current guid to the list of odata
+    //           if(docID == assHMOObject.mphhi_systemuser["Id"]) {
+    //             console.log(assHMOObject.mphhi_systemuser["Id"]);
+    //             // asHospArray.push(assHMOObject.mphhi_hospital["Name"]);
+    //             hmoArray.push(assHMOObject.mphhi_systemuser["Id"]);
+    //           }
+    //           // return (docID == assHocObject.mphhi_doctor["Id"]); // check guid
+    //         }
+    //       );
+          
+    //     }
+    //     getHMOs(); // initiate function
+    //     //console.log(hmoArray);
+    //     for(let hmo of hmoArray) { // get each 
+    //       $("#hmos").append("<i class='fas fa-heartbeat' style='color: #0f4b90;'></i> " +hmo + "<br>");
+    //     }
+        
+        // for(let aH of asHospArray) { // get each 
+        //    $("#assocHosp").append("<i class='fas fa-clinic-medical' style='color: #5BBA47;'></i> " +aH + "<br>");
+        // }
+
+            
+        // // End of Associated HMOS Odata Query
+        // // =============================================================================
+
+
+      // get doctor data
+      var doctorID = $("#mphhi_doctor").val(); // doctor guid
+      var doctorName = $("#mphhi_doctor_name").val();// doctor name
+      var doctorEntityName = "systemuser";// doctor entity name
+      // get associated hospital data
+      // Get the query string from the URL
+      var queryString = window.location.search;
+      queryString = queryString.substring(1);
+
+      // Parse the query string and assign parameters to "params" object
+      var queries = queryString.split("&");
+      var params = {};
+      var query;
+      for (var i = 0; i < queries.length; ++i) {
+          query = queries[i].split("=");
+          params[decodeURIComponent(query[0])] = decodeURIComponent(query[1]);
+      }
+
+      var assHocID = params["id"]; // associated hospital id
+      var assHocName = ""; // associated hospital name
+      var assHocEntityName = "mphhi_associatedHospital"; // associated hospital entiy name
+
+      // get specialization/department data
+      var specID = $("#mphhi_department").val(); // spec id
+      var specName = $("#mphhi_department_name").val(); // spec name
+      var specEntityName = "mphhi_department"; // spec entityname
+
+      // get Hospital data
+      var hospID = $("#mphhi_hospital").val(); // hosp id
+      var hospName = $("#mphhi_hospital_name").val(); // hosp name
+      var hospEntityName = "msemr_location"; // hosp entityname
+
+
+        $('table[data-name="General"][class="section"]').addClass('custom-border-bottom');
+        // $('table[data-name="General"][class="section"]').css({ //add border bottom
+        //     "border-bottom": "1px solid #eee;"
+        // });
+        //$("#mphhi_doctor_name").closest("tr").find('td.clearfix.cell').remove(); //remove spacer
+        //$("#mphhi_doctor_name").closest("td").parent().append("<td class='book-doctor-container'><button class='btn btn-primary button' onclick=>Book Appointment</button></td>"); //add button
+        $("#mphhi_doctor_name").closest("td").next().append("<a style='float: right;' class='btn btn-primary button clinic' id='bookVirtual' href='https://mphhi-dev-us.powerappsportals.com/new-appointment-web-form/?type=virtual&aid="+assHocID+"'>Book Virtual Consultation</a>"); //add button
+        $("#mphhi_doctor_name").closest("td").next().append("<a style='float: right;' class='btn btn-primary button' id='bookClinic' href='https://mphhi-dev-us.powerappsportals.com/new-appointment-web-form/?type=clinic&aid="+assHocID+"'>Book Clinic Consultation</a>"); //add button
+        // $("#mphhi_doctor_name").closest("td").next().append("<a style='float: right;' class='btn btn-primary button clinic' id='bookVirtual' '>Book Virtual Consultation</a>"); //add button
+        // $("#mphhi_doctor_name").closest("td").next().append("<a style='float: right;' class='btn btn-primary button' id='bookClinic''>Book Clinic Consultation</a>"); //add button
+        // 
+        if(!virtual && !f2f) {
+          $('#bookClinic').attr('disabled','disabled');
+          $('#bookVirtual').attr('disabled','disabled');
+          $('#bookClinic').removeAttr('href')
+          $('#bookVirtual').removeAttr('href')
+          $('#bookClinic').off('click');
+          $('#bookVirtual').off('click');
+        } else if (!virtual) {
+          $('#bookVirtual').attr('disabled','disabled');
+          $('#bookVirtual').removeAttr('href')
+          $('#bookVirtual').off('click');
+        } else if (!f2f) {
+          $('#bookClinic').attr('disabled','disabled');
+          $('#bookClinic').removeAttr('href')
+          $('#bookClinic').off('click');
+        } else {
+          console.log("true");
+        }
+
+    //============================================================================
+    // OData query for Associated Hospitals - Get all values and then edit html css
+    var assHMO = [];
+    var assHMOServicesURL = "~/_odata/HMOs";
+    $.ajax({
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        datatype: "json",
+        url: assHMOServicesURL,
+        beforeSend: function(XMLHttpRequest) {
+            XMLHttpRequest.setRequestHeader("Accept", "application/json");
+        },
+        async: false,
+        success: function(data, textStatus, xhr) {
+          assHMO = assHMO.concat(data.value);
+          assHMOServicesURL = data["odata.nextLink"];
+        }
+    });
+    // GET ODATA RESULT BEFORE EXECUTING
+    var hmoArray = [];
+
+        function getAssociatedHMOs() {
+          var doctorAssocHMOs = {};
+          doctorAssocHMOs = assHMO.find(
+            function(assHMOObject) {
+              // check current guid to the list of odata
+            try {
+              if(assHMOObject.mphhi_systemuser.Id) {
+                  //console.log(assHMOObject);
+                  if(docID == assHMOObject.mphhi_systemuser.Id) {
+                  console.log(assHMOObject.mphhi_name);
+                  hmoArray.push(assHMOObject.mphhi_name);
+                  }
+                } else {
+                  console.log("null");
+                }
+              } catch(err) {
+                console.log(err);
+                // console.log(assHMOObject);
+              }
+            }
+          );
+        }
+        getAssociatedHMOs(); // initiate function
+        for(let asH of hmoArray) { // get each 
+          $("#hmos").append("<i class='fas fa-heartbeat' style='color: #0f4b90;'></i> " +asH + "<br>");
+        }
+        
+      });
+
+    // $('#bookAppointment').click(function(){
+    //   window.location.href='https://mphhi-dev-us.powerappsportals.com/new-appointment-web-form/';
+    // })
+</script>
+
+
+{% if user | has_role:"Anonymous Users" %}
+  <script>
+    $('a[href="/corporate-appointments/"][role="menuitem"]').hide(); // hide corporate appointments in header 
+  </script> 
+
+{% elsif user | has_role:"Authenticated Users" %}
+
+  <script>
+    $('a[href="/corporate-appointments/"][role="menuitem"]').hide(); // hide corporate appointments in header 
+  </script> 
+
+  {% elsif user | has_role:"Corporate Representative" %}
+  <script>
+    $('a[class="weblink list-group-item"][href="/profile/profile-my-appointments/"][title="Appointments"][aria-label="Appointments"]').hide(); //hide appointments
+        $('a[class="weblink list-group-item"][href="/profile/profile-my-medical-histories/"][title="Medical History"][aria-label="Medical History"]').hide(); //hide medical history
+        $('a[class="weblink list-group-item"][href="/guarantors/"][title="Guarantors"][aria-label="Guarantors"]').hide(); //hide guarantors
+        $('a[class="weblink list-group-item"][aria-label="Manage My Dependents"]').hide(); //hide dependents weblink
+        $('a[href="/dependents/"][role="menuitem"][aria-label="Manage My Dependents"]').hide(); // hide dependents in header dropdown
+        $('a[href="/my-appointments/dependents-appointments/"][role="menuitem"]').hide(); // hide dependents appointments in header dropdown
+        $('a[title="Appointments"][class="dropdown-toggle"][role="menuitem"]').hide(); // hide appointments in header 
+        $('a[href="/pharmacy-orders/"][role="menuitem"]').hide(); // hide appointments in header 
+  </script>
+
+    <!-- Fetch xml for Associated Hospitals -->
+    <!-- {% fetchxml assocHosp %}
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="mphhi_associatedhospital">
+          <attribute name="mphhi_associatedhospitalid" />
+          <attribute name="mphhi_hospital" />
+          <attribute name="mphhi_department" />
+          <attribute name="mphhi_name" />
+          <attribute name="createdon" />
+          <order attribute="mphhi_name" descending="false" />
+          <filter type="and">
+           <condition attribute="mphhi_doctor" operator="eq" uiname="Ronald Pahutan" uitype="systemuser" value="{4CAD911E-408C-EB11-A812-000D3A4E81ED}" /> -->
+            <!-- <condition attribute="mphhi_doctor" operator="eq" value="{4CAD911E-408C-EB11-A812-000D3A4E81ED}" />
+          </filter>
+        </entity>
+      </fetch>
+    {% endfetchxml %} -->
+    <!-- {% for assoc in assocHosp.results.entities %}
+      <div style="text-transform: uppercase;">
+        <span style="color: #6E3476; font-weight:bold">{{ assoc.mphhi_associatedhospitalid }}</span>
+        <span style="color: #6E3476; font-weight:bold">{{ assoc.mphhi_hospital }}</span>
+        <span style="color: #6E3476; font-weight:bold">{{ assoc.mphhi_department }}</span>
+        <span style="color: #6E3476; font-weight:bold">{{ assoc.mphhi_name }}</span>
+      </div>
+    {% endfor %} -->
+{% else %}
+{% endif %}
+
+{% endblock %}
